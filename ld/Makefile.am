@@ -67,14 +67,7 @@ scriptdir = $(tooldir)/lib
 
 EMUL = @EMUL@
 EMULATION_OFILES = @EMULATION_OFILES@
-
-
-#we have a problem with ldelf.o on plan9
-#ifeq ($(target_os), plan9)
-	EMUL_EXTRA_OFILES =
-#else
-#	EMUL_EXTRA_OFILES = @EMUL_EXTRA_OFILES@
-#endif
+EMUL_EXTRA_OFILES = @EMUL_EXTRA_OFILES@
 
 # Search path to override the default search path for -lfoo libraries.
 # If LIB_PATH is empty, the ones in the script (if any) are left alone.
@@ -962,13 +955,7 @@ $(ALL_EMULATION_SOURCES) $(ALL_64_EMULATION_SOURCES): $(GEN_DEPENDS)
 # We need this for automake to use YLWRAP.
 EXTRA_ld_new_SOURCES = deffilep.y ldlex.l
 # Allow dependency tracking to work for these files, too.
-
-# Plan9 is a static aout format, ldelf causes problems
-#ifeq ($(target_os), plan9)
-	EXTRA_ld_new_SOURCES +=
-#else
-#	EXTRA_ld_new_SOURCES += pep-dll.c pe-dll.c ldelf.c ldelfgen.c
-#endif
+EXTRA_ld_new_SOURCES += pep-dll.c pe-dll.c ldelf.c ldelfgen.c
 
 ld_new_SOURCES = ldgram.y ldlex-wrapper.c lexsup.c ldlang.c mri.c ldctor.c ldmain.c \
 	ldwrite.c ldexp.c ldemul.c ldver.c ldmisc.c ldfile.c ldcref.c $(PLUGIN_C) \

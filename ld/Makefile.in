@@ -355,6 +355,7 @@ am__depfiles_remade = ./$(DEPDIR)/deffilep.Po \
 	./$(DEPDIR)/ez80.Po ./$(DEPDIR)/ez8001.Po \
 	./$(DEPDIR)/ez8002.Po ./$(DEPDIR)/ldbuildid.Po \
 	./$(DEPDIR)/ldcref.Po ./$(DEPDIR)/ldctor.Po \
+	./$(DEPDIR)/ldelf.Po ./$(DEPDIR)/ldelfgen.Po \
 	./$(DEPDIR)/ldemul.Po ./$(DEPDIR)/ldexp.Po \
 	./$(DEPDIR)/ldfile.Po ./$(DEPDIR)/ldgram.Po \
 	./$(DEPDIR)/ldlang.Po ./$(DEPDIR)/ldlex-wrapper.Po \
@@ -365,6 +366,7 @@ am__depfiles_remade = ./$(DEPDIR)/deffilep.Po \
 	./$(DEPDIR)/libldtestplug3_la-testplug3.Plo \
 	./$(DEPDIR)/libldtestplug4_la-testplug4.Plo \
 	./$(DEPDIR)/libldtestplug_la-testplug.Plo ./$(DEPDIR)/mri.Po \
+	./$(DEPDIR)/pe-dll.Po ./$(DEPDIR)/pep-dll.Po \
 	./$(DEPDIR)/plugin.Po
 am__mv = mv -f
 COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
@@ -573,9 +575,6 @@ LEX_OUTPUT_ROOT = @LEX_OUTPUT_ROOT@
 LIBOBJS = @LIBOBJS@
 LIBS = @LIBS@
 LIBTOOL = @LIBTOOL@
-#else
-#	EMUL_EXTRA_OFILES = @EMUL_EXTRA_OFILES@
-#endif
 
 # Search path to override the default search path for -lfoo libraries.
 # If LIB_PATH is empty, the ones in the script (if any) are left alone.
@@ -1157,13 +1156,12 @@ GENSCRIPTS = $(SHELL) $(srcdir)/genscripts.sh "${srcdir}" "${libdir}" "${prefix}
 GEN_DEPENDS = $(srcdir)/genscripts.sh stringify.sed
 
 # We need this for automake to use YLWRAP.
+# Allow dependency tracking to work for these files, too.
 
 # Dependency tracking for the generated emulation files.
-EXTRA_ld_new_SOURCES = deffilep.y ldlex.l $(ALL_EMULATION_SOURCES) \
+EXTRA_ld_new_SOURCES = deffilep.y ldlex.l pep-dll.c pe-dll.c ldelf.c \
+	ldelfgen.c $(ALL_EMULATION_SOURCES) \
 	$(ALL_64_EMULATION_SOURCES)
-#else
-#	EXTRA_ld_new_SOURCES += pep-dll.c pe-dll.c ldelf.c ldelfgen.c
-#endif
 ld_new_SOURCES = ldgram.y ldlex-wrapper.c lexsup.c ldlang.c mri.c ldctor.c ldmain.c \
 	ldwrite.c ldexp.c ldemul.c ldver.c ldmisc.c ldfile.c ldcref.c $(PLUGIN_C) \
 	ldbuildid.c
@@ -1660,6 +1658,8 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ldbuildid.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ldcref.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ldctor.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ldelf.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ldelfgen.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ldemul.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ldexp.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ldfile.Po@am__quote@ # am--include-marker
@@ -1677,6 +1677,8 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libldtestplug4_la-testplug4.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libldtestplug_la-testplug.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mri.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/pe-dll.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/pep-dll.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/plugin.Po@am__quote@ # am--include-marker
 
 $(am__depfiles_remade):
@@ -2427,6 +2429,8 @@ distclean: distclean-recursive
 	-rm -f ./$(DEPDIR)/ldbuildid.Po
 	-rm -f ./$(DEPDIR)/ldcref.Po
 	-rm -f ./$(DEPDIR)/ldctor.Po
+	-rm -f ./$(DEPDIR)/ldelf.Po
+	-rm -f ./$(DEPDIR)/ldelfgen.Po
 	-rm -f ./$(DEPDIR)/ldemul.Po
 	-rm -f ./$(DEPDIR)/ldexp.Po
 	-rm -f ./$(DEPDIR)/ldfile.Po
@@ -2444,6 +2448,8 @@ distclean: distclean-recursive
 	-rm -f ./$(DEPDIR)/libldtestplug4_la-testplug4.Plo
 	-rm -f ./$(DEPDIR)/libldtestplug_la-testplug.Plo
 	-rm -f ./$(DEPDIR)/mri.Po
+	-rm -f ./$(DEPDIR)/pe-dll.Po
+	-rm -f ./$(DEPDIR)/pep-dll.Po
 	-rm -f ./$(DEPDIR)/plugin.Po
 	-rm -f Makefile
 distclean-am: clean-am distclean-DEJAGNU distclean-compile \
@@ -2890,6 +2896,8 @@ maintainer-clean: maintainer-clean-recursive
 	-rm -f ./$(DEPDIR)/ldbuildid.Po
 	-rm -f ./$(DEPDIR)/ldcref.Po
 	-rm -f ./$(DEPDIR)/ldctor.Po
+	-rm -f ./$(DEPDIR)/ldelf.Po
+	-rm -f ./$(DEPDIR)/ldelfgen.Po
 	-rm -f ./$(DEPDIR)/ldemul.Po
 	-rm -f ./$(DEPDIR)/ldexp.Po
 	-rm -f ./$(DEPDIR)/ldfile.Po
@@ -2907,6 +2915,8 @@ maintainer-clean: maintainer-clean-recursive
 	-rm -f ./$(DEPDIR)/libldtestplug4_la-testplug4.Plo
 	-rm -f ./$(DEPDIR)/libldtestplug_la-testplug.Plo
 	-rm -f ./$(DEPDIR)/mri.Po
+	-rm -f ./$(DEPDIR)/pe-dll.Po
+	-rm -f ./$(DEPDIR)/pep-dll.Po
 	-rm -f ./$(DEPDIR)/plugin.Po
 	-rm -f Makefile
 maintainer-clean-am: distclean-am maintainer-clean-aminfo \
@@ -2958,9 +2968,6 @@ uninstall-man: uninstall-man1
 
 .PRECIOUS: Makefile
 
-#we have a problem with ldelf.o on plan9
-#ifeq ($(target_os), plan9)
-	EMUL_EXTRA_OFILES =
 
 # Disable -Werror, if it has been enabled, since old versions of bison/
 # yacc will produce working code which contain compile time warnings.
@@ -3369,10 +3376,6 @@ $(ALL_EMULATION_SOURCES) $(ALL_64_EMULATION_SOURCES): $(GEN_DEPENDS)
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ehppa64linux.Pc@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ei386pep.Pc@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/emmo.Pc@am__quote@
-# Allow dependency tracking to work for these files, too.
-# Plan9 is a static aout format, ldelf causes problems
-#ifeq ($(target_os), plan9)
-	EXTRA_ld_new_SOURCES +=
 
 check-DEJAGNU: site.exp
 	srcroot=`cd $(srcdir) && pwd`; export srcroot; \

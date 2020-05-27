@@ -507,6 +507,7 @@ esac
 
 case "$target_os" in
   lynxos) EXTRA_SHLIB_EXTENSION=".a" ;;
+  plan9) EMUL_EXTRA_OFILES="" ;;
 esac
 
 if test x${EXTRA_SHLIB_EXTENSION} != x ; then
