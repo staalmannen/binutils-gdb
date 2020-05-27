@@ -541,12 +541,12 @@ colon (/* Just seen "x:" - rattle symbols & frags.  */
 		}
 	      else
 		{
-#if (!defined (OBJ_AOUT) && !defined (OBJ_MAYBE_AOUT))
+#if (!defined (OBJ_AOUT) && !defined (OBJ_MAYBE_AOUT) && !defined (OBJ_PLAN9))
 		  static const char *od_buf = "";
 #else
 		  char od_buf[100];
 		  od_buf[0] = '\0';
-		  if (OUTPUT_FLAVOR == bfd_target_aout_flavour)
+		  if (OUTPUT_FLAVOR == bfd_target_aout_flavour || OUTPUT_FLAVOR == bfd_target_plan9_flavour)
 		    sprintf (od_buf, "%d.%d.",
 			     S_GET_OTHER (symbolP),
 			     S_GET_DESC (symbolP));

@@ -383,6 +383,7 @@ BFD32_BACKENDS = \
 	pei-ppc.lo \
 	pei-sh.lo \
 	peigen.lo \
+	plan9-i386.lo \
 	plugin.lo \
 	ppcboot.lo \
 	reloc16.lo \
@@ -518,6 +519,7 @@ BFD32_BACKENDS_CFILES = \
 	pei-mcore.c \
 	pei-ppc.c \
 	pei-sh.c \
+	plan9-i386.c \
 	plugin.c \
 	ppcboot.c \
 	reloc16.c \
@@ -700,7 +702,7 @@ SOURCE_HFILES = \
 	libpei.h libxcoff.h \
 	mach-o.h \
 	netbsd.h ns32k.h \
-	pef.h pef-traceback.h peicode.h plugin.h \
+	pef.h pef-traceback.h peicode.h plan9-aout.h plugin.h \
 	som.h sysdep.h \
 	version.h vms.h \
 	wasm-module.h \
@@ -827,6 +829,9 @@ if AMDEP
 endif
 	$(LTCOMPILE) -c -o $@ -DDEBUGDIR=\"$(DEBUGDIR)\" $(srcdir)/dwarf2.c
 endif
+
+plan9-i386.lo: plan9-i386.c $(INCDIR)/filenames.h $(INCDIR)/bfdlink.h \
+  libaout.h
 
 elf32-target.h : elfxx-target.h
 	rm -f elf32-target.h

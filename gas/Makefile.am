@@ -289,6 +289,7 @@ OBJ_FORMAT_CFILES = \
 	config/obj-fdpicelf.c \
 	config/obj-macho.c \
 	config/obj-multi.c \
+	config/obj-plan9.c \
 	config/obj-som.c
 
 OBJ_FORMAT_HFILES = \
@@ -300,6 +301,7 @@ OBJ_FORMAT_HFILES = \
 	config/obj-fdpicelf.h \
 	config/obj-macho.h \
 	config/obj-multi.h \
+	config/obj-plan9.h \
 	config/obj-som.h
 
 # Emulation header files in config
@@ -346,6 +348,7 @@ MULTI_CFILES = \
 	config/e-crisaout.c \
 	config/e-criself.c \
 	config/e-i386aout.c \
+	config/e-i386plan9.c \
 	config/e-i386coff.c \
 	config/e-i386elf.c \
 	config/e-mipself.c

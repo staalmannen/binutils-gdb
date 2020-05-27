@@ -135,7 +135,7 @@ case $1 in
 			| linux-newlib* | linux-musl* | linux-uclibc* | uclinux-uclibc* \
 			| uclinux-gnu* | kfreebsd*-gnu* | knetbsd*-gnu* | netbsd*-gnu* \
 			| netbsd*-eabi* | kopensolaris*-gnu* | cloudabi*-eabi* \
-			| storm-chaos* | os2-emx* | rtmk-nova*)
+			| storm-chaos* | os2-emx* | rtmk-nova* | plan9 )
 				basic_machine=$field1
 				os=$maybe_os
 				;;
@@ -476,6 +476,10 @@ case $1 in
 			parisc)
 				basic_machine=hppa-unknown
 				os=linux
+				;;
+			plan9)
+				basic_machine=
+				os=plan9
 				;;
 			pw32)
 				basic_machine=i586-unknown
