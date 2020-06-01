@@ -36,6 +36,8 @@ config/obj-hp300.c
 config/obj-hp300.h
 config/obj-ieee.c
 config/obj-ieee.h
+config/obj-plan9.c
+config/obj-plan9.h
 config/obj-som.c
 config/obj-som.h
 config/obj-vms.c

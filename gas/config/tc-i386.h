@@ -109,6 +109,9 @@ extern const char *i386_target_format PARAMS ((void));
 #ifdef OBJ_AOUT
 #define TARGET_FORMAT		AOUT_TARGET_FORMAT
 #endif
+#ifdef OBJ_PLAN9
+#define TARGET_FORMAT		"plan9-i386"
+#endif
 #endif
 
 #else /* ! BFD_ASSEMBLER */

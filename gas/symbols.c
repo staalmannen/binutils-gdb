@@ -428,13 +428,14 @@ colon (sym_name)		/* Just seen "x:" - rattle symbols & frags.  */
 	      else
 		{
 #if (!defined (OBJ_AOUT) && !defined (OBJ_MAYBE_AOUT) \
-     && !defined (OBJ_BOUT) && !defined (OBJ_MAYBE_BOUT))
+     && !defined (OBJ_BOUT) && !defined (OBJ_MAYBE_BOUT) \
+     && !defined (OBJ_PLAN9))
 		  static const char *od_buf = "";
 #else
 		  char od_buf[100];
 		  od_buf[0] = '\0';
 #ifdef BFD_ASSEMBLER
-		  if (OUTPUT_FLAVOR == bfd_target_aout_flavour)
+		  if (OUTPUT_FLAVOR == bfd_target_aout_flavour || OUTPUT_FLAVOR == bfd_target_plan9_flavour)
 #endif
 		    sprintf(od_buf, "%d.%d.",
 			    S_GET_OTHER (symbolP),
@@ -1145,7 +1146,7 @@ resolve_symbol_value (symp, finalize)
     {
       S_SET_VALUE (symp, final_val);
 
-#if defined (OBJ_AOUT) && ! defined (BFD_ASSEMBLER)
+#if (defined (OBJ_AOUT) || defined (OBJ_PLAN9)) && ! defined (BFD_ASSEMBLER)
       /* The old a.out backend does not handle S_SET_SEGMENT correctly
          for a stab symbol, so we use this bad hack.  */
       if (final_seg != S_GET_SEGMENT (symp))

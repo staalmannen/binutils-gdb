@@ -210,6 +210,7 @@ ALL_EMULATIONS = \
 	epc532macha.o \
 	epjelf.o \
 	epjlelf.o \
+	eplan9_i386.o \
 	eppcmacos.o \
 	eppcnw.o \
 	eppcpe.o \
@@ -698,6 +699,9 @@ epjelf.c: $(srcdir)/emulparams/pjelf.sh \
 epjlelf.c: $(srcdir)/emulparams/pjlelf.sh \
   $(srcdir)/emultempl/elf32.em $(srcdir)/scripttempl/elf.sc ${GEN_DEPENDS}
 	${GENSCRIPTS} pjlelf "$(tdir_pjlelf)"
+eplan9_i386.c: $(srcdir)/emulparams/plan9_i386.sh \
+  $(srcdir)/emultempl/generic.em $(srcdir)/scripttempl/plan9.sc ${GEN_DEPENDS}
+	${GENSCRIPTS} plan9_i386 "$(tdir_plan9_i386)"
 eppcmacos.c:	$(srcdir)/emulparams/ppcmacos.sh \
   $(srcdir)/emultempl/aix.em $(srcdir)/scripttempl/aix.sc ${GEN_DEPENDS}
 	${GENSCRIPTS} ppcmacos "$(tdir_ppcmacos)"

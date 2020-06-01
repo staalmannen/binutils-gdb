@@ -153,7 +153,8 @@ DESCRIPTION
 .  bfd_target_versados_flavour,
 .  bfd_target_msdos_flavour,
 .  bfd_target_ovax_flavour,
-.  bfd_target_evax_flavour
+.  bfd_target_evax_flavour,
+.  bfd_target_plan9_flavour
 .};
 .
 .enum bfd_endian { BFD_ENDIAN_BIG, BFD_ENDIAN_LITTLE, BFD_ENDIAN_UNKNOWN };
@@ -625,6 +626,7 @@ extern const bfd_target nlm32_sparc_vec;
 extern const bfd_target oasys_vec;
 extern const bfd_target pc532machaout_vec;
 extern const bfd_target pc532netbsd_vec;
+extern const bfd_target plan9_i386_vec;
 extern const bfd_target pmac_xcoff_vec;
 extern const bfd_target ppcboot_vec;
 extern const bfd_target riscix_vec;
@@ -902,6 +904,7 @@ static const bfd_target * const _bfd_target_vector[] = {
 #ifdef BFD64
 	&rs6000coff64_vec,
 #endif
+	&plan9_i386_vec,
 	&ppcboot_vec,
 	&shcoff_vec,
 	&shlcoff_vec,

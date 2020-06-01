@@ -2061,9 +2061,10 @@ s_lcomm_internal (needs_align, bytes_p)
 
   if (
 #if (defined (OBJ_AOUT) || defined (OBJ_MAYBE_AOUT) \
-     || defined (OBJ_BOUT) || defined (OBJ_MAYBE_BOUT))
+    || defined (OBJ_BOUT) || defined (OBJ_MAYBE_BOUT) \
+     || defined (OBJ_PLAN9))
 #ifdef BFD_ASSEMBLER
-      (OUTPUT_FLAVOR != bfd_target_aout_flavour
+      (OUTPUT_FLAVOR != bfd_target_aout_flavour && OUTPUT_FLAVOR != bfd_target_plan9_flavour
        || (S_GET_OTHER (symbolP) == 0 && S_GET_DESC (symbolP) == 0)) &&
 #else
       (S_GET_OTHER (symbolP) == 0 && S_GET_DESC (symbolP) == 0) &&
@@ -3151,14 +3152,14 @@ pseudo_set (symbolP)
      symbolS *symbolP;
 {
   expressionS exp;
-#if (defined (OBJ_AOUT) || defined (OBJ_BOUT)) && ! defined (BFD_ASSEMBLER)
+#if (defined (OBJ_AOUT) || defined (OBJ_BOUT) || defined (OBJ_PLAN9)) && ! defined (BFD_ASSEMBLER)
   int ext;
-#endif /* OBJ_AOUT or OBJ_BOUT */
+#endif /* OBJ_AOUT or OBJ_BOUT or OBJ_PLAN9 */
 
   know (symbolP);		/* NULL pointer is logic error.  */
-#if (defined (OBJ_AOUT) || defined (OBJ_BOUT)) && ! defined (BFD_ASSEMBLER)
+#if (defined (OBJ_AOUT) || defined (OBJ_BOUT) || defined (OBJ_PLAN9)) && ! defined (BFD_ASSEMBLER)
   ext = S_IS_EXTERNAL (symbolP);
-#endif /* OBJ_AOUT or OBJ_BOUT */
+#endif /* OBJ_AOUT or OBJ_BOUT or OBJ_PLAN9 */
 
   (void) expression (&exp);
 
@@ -3194,12 +3195,12 @@ pseudo_set (symbolP)
       /* Fall through.  */
     case O_constant:
       S_SET_SEGMENT (symbolP, absolute_section);
-#if (defined (OBJ_AOUT) || defined (OBJ_BOUT)) && ! defined (BFD_ASSEMBLER)
+#if (defined (OBJ_AOUT) || defined (OBJ_BOUT) || defined (OBJ_PLAN9)) && ! defined (BFD_ASSEMBLER)
       if (ext)
 	S_SET_EXTERNAL (symbolP);
       else
 	S_CLEAR_EXTERNAL (symbolP);
-#endif /* OBJ_AOUT or OBJ_BOUT */
+#endif /* OBJ_AOUT or OBJ_BOUT or OBJ_PLAN9 */
       S_SET_VALUE (symbolP, (valueT) exp.X_add_number);
       if (exp.X_op != O_constant)
 	symbol_set_frag (symbolP, &zero_address_frag);
@@ -3222,12 +3223,12 @@ pseudo_set (symbolP)
 	  symbolS *s = exp.X_add_symbol;
 
 	  S_SET_SEGMENT (symbolP, S_GET_SEGMENT (s));
-#if (defined (OBJ_AOUT) || defined (OBJ_BOUT)) && ! defined (BFD_ASSEMBLER)
+#if (defined (OBJ_AOUT) || defined (OBJ_BOUT) || defined (OBJ_PLAN9)) && ! defined (BFD_ASSEMBLER)
 	  if (ext)
 	    S_SET_EXTERNAL (symbolP);
 	  else
 	    S_CLEAR_EXTERNAL (symbolP);
-#endif /* OBJ_AOUT or OBJ_BOUT */
+#endif /* OBJ_AOUT or OBJ_BOUT or OBJ_PLAN9 */
 	  S_SET_VALUE (symbolP,
 		       exp.X_add_number + S_GET_VALUE (s));
 	  symbol_set_frag (symbolP, symbol_get_frag (s));
