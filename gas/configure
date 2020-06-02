@@ -13093,6 +13093,7 @@ _ACEOF
       # i386-*-linux*-elf) emulation="i386elf i386aout" ;;
       #
       i386-*-aout)	emulation="i386aout" ;;
+      i386-*-plan9) emulation="i386plan9" ;;
       i386-*-coff)	emulation="i386coff" ;;
       i386-*-elf)	emulation="i386elf" ;;
 
@@ -13176,6 +13177,9 @@ if test ${all_targets} = "yes"; then
   i386)
     case ${obj_format} in
     aout)
+      emulations="$emulations i386coff i386elf"
+      ;;
+    plan9)
       emulations="$emulations i386coff i386elf"
       ;;
     coff)
@@ -13293,6 +13297,8 @@ for em in . $emulations ; do
 	fmt=coff  file=$em ;;
     *aout)
 	fmt=aout file=$em ;;
+	*plan9)
+	fmt=plan9 file=$em ;;
     *elf)
 	fmt=elf file=$em ;;
   esac

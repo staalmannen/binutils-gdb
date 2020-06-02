@@ -165,7 +165,8 @@ DESCRIPTION
 .  bfd_target_mach_o_flavour,
 .  bfd_target_pef_flavour,
 .  bfd_target_pef_xlib_flavour,
-.  bfd_target_sym_flavour
+.  bfd_target_sym_flavour,
+.  bfd_target_plan9_flavour
 .};
 .
 .enum bfd_endian { BFD_ENDIAN_BIG, BFD_ENDIAN_LITTLE, BFD_ENDIAN_UNKNOWN };
@@ -740,6 +741,7 @@ extern const bfd_target i386_mach_o_vec;
 extern const bfd_target i386_msdos_vec;
 extern const bfd_target i386_pe_vec;
 extern const bfd_target i386_pei_vec;
+extern const bfd_target i386_plan9_vec;
 extern const bfd_target iamcu_elf32_vec;
 extern const bfd_target ia64_elf32_be_vec;
 extern const bfd_target ia64_elf32_hpux_be_vec;
@@ -1089,6 +1091,7 @@ static const bfd_target * const _bfd_target_vector[] =
 	&i386_msdos_vec,
 	&i386_pe_vec,
 	&i386_pei_vec,
+	&i386_plan9_vec,
 
 	&iamcu_elf32_vec,
 
@@ -1344,6 +1347,7 @@ static const bfd_target * const _bfd_target_vector[] =
 	&x86_64_pei_vec,
 #endif
 
+    
 	&xc16x_elf32_vec,
 
 	&xgate_elf32_vec,
@@ -1780,6 +1784,7 @@ bfd_flavour_name (enum bfd_flavour flavour)
     {
     case bfd_target_unknown_flavour: return "unknown file format";
     case bfd_target_aout_flavour: return "a.out";
+    case bfd_target_plan9_flavour: return "Plan9";
     case bfd_target_coff_flavour: return "COFF";
     case bfd_target_ecoff_flavour: return "ECOFF";
     case bfd_target_xcoff_flavour: return "XCOFF";

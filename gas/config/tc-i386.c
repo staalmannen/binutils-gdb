@@ -1252,7 +1252,7 @@ pe_lcomm (int needs_align)
 
 const pseudo_typeS md_pseudo_table[] =
 {
-#if !defined(OBJ_AOUT) && !defined(USE_ALIGN_PTWO)
+#if !defined(OBJ_AOUT) && !defined(OBJ_PLAN9) && !defined(USE_ALIGN_PTWO)
   {"align", s_align_bytes, 0},
 #else
   {"align", s_align_ptwo, 0},
@@ -9860,8 +9860,8 @@ i386_finalize_immediate (segT exp_seg ATTRIBUTE_UNUSED, expressionS *exp,
 	exp->X_add_number
 	  = (exp->X_add_number ^ ((addressT) 1 << 31)) - ((addressT) 1 << 31);
     }
-#if (defined (OBJ_AOUT) || defined (OBJ_MAYBE_AOUT))
-  else if (OUTPUT_FLAVOR == bfd_target_aout_flavour
+#if (defined (OBJ_AOUT) || defined (OBJ_PLAN9) || defined (OBJ_MAYBE_AOUT))
+  else if ((OUTPUT_FLAVOR == bfd_target_aout_flavour || OUTPUT_FLAVOR == bfd_target_plan9_flavour)
 	   && exp_seg != absolute_section
 	   && exp_seg != text_section
 	   && exp_seg != data_section
@@ -10173,9 +10173,9 @@ i386_finalize_displacement (segT exp_seg ATTRIBUTE_UNUSED, expressionS *exp,
 	}
     }
 
-#if (defined (OBJ_AOUT) || defined (OBJ_MAYBE_AOUT))
+#if (defined (OBJ_AOUT) || defined (OBJ_PLAN9) || defined (OBJ_MAYBE_AOUT))
   else if (exp->X_op != O_constant
-	   && OUTPUT_FLAVOR == bfd_target_aout_flavour
+	   && (OUTPUT_FLAVOR == bfd_target_aout_flavour || OUTPUT_FLAVOR == bfd_target_plan9_flavour)
 	   && exp_seg != absolute_section
 	   && exp_seg != text_section
 	   && exp_seg != data_section
@@ -11628,12 +11628,14 @@ md_apply_fix (fixS *fixP, valueT *valP, segT seg ATTRIBUTE_UNUSED)
 	 subtract the current location (for partial_inplace, PC relative
 	 relocations); see more below.  */
 #ifndef OBJ_AOUT
+#ifndef OBJ_PLAN9
       if (IS_ELF
 #ifdef TE_PE
 	  || OUTPUT_FLAVOR == bfd_target_coff_flavour
 #endif
 	  )
 	value += fixP->fx_where + fixP->fx_frag->fr_address;
+#endif
 #endif
 #if defined (OBJ_ELF) || defined (OBJ_MAYBE_ELF)
       if (IS_ELF)
@@ -12881,7 +12883,7 @@ i386_target_format (void)
 
   switch (OUTPUT_FLAVOR)
     {
-#if defined (OBJ_MAYBE_AOUT) || defined (OBJ_AOUT)
+#if defined (OBJ_MAYBE_AOUT) || defined (OBJ_AOUT) || defined(OBJ_PLAN9)
     case bfd_target_aout_flavour:
       return AOUT_TARGET_FORMAT;
 #endif
@@ -12997,8 +12999,8 @@ md_undefined_symbol (char *name)
 valueT
 md_section_align (segT segment ATTRIBUTE_UNUSED, valueT size)
 {
-#if (defined (OBJ_AOUT) || defined (OBJ_MAYBE_AOUT))
-  if (OUTPUT_FLAVOR == bfd_target_aout_flavour)
+#if (defined (OBJ_AOUT) || defined (OBJ_MAYBE_AOUT)) || defined (OBJ_PLAN9)
+  if (OUTPUT_FLAVOR == bfd_target_aout_flavour || OUTPUT_FLAVOR == bfd_target_plan9_flavour)
     {
       /* For a.out, force the section size to be aligned.  If we don't do
 	 this, BFD will align it for us, but it will not write out the

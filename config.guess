@@ -166,6 +166,20 @@ esac
 
 # Note: order is significant - the case branches are not exclusive.
 
+case "${UNAME_MACHINE}:${UNAME_SYSTEM}:${UNAME_RELEASE}:${UNAME_VERSION}" in
+    *:Plan9:*:*)
+	case "${cputype}" in
+	    68000) cpu=m68k ;;
+	    68020) cpu=m68k ;;
+	    386) cpu=i386 ;;
+	    arm) cpu=armel ;;
+	    spim) cpu=mipsel ;;
+	    *) cpu=${cputype} ;;
+	esac
+	echo "${cpu}-lucent-plan9"
+	exit ;;
+esac
+
 case "$UNAME_MACHINE:$UNAME_SYSTEM:$UNAME_RELEASE:$UNAME_VERSION" in
     *:NetBSD:*:*)
 	# NetBSD (nbsd) targets should (where applicable) match one or
@@ -1113,6 +1127,17 @@ EOF
 	# I just have to hope.  -- rms.
 	# Use sysv4.2uw... so that sysv4* matches it.
 	echo "$UNAME_MACHINE"-pc-sysv4.2uw"$UNAME_VERSION"
+	exit ;;
+    *:Plan9:*:*)
+	# "uname -m" is not consistent, so use $cputype instead. 386
+	# is converted to i386 for consistency with other x86
+	# operating systems.
+	if test "$cputype" = "386"; then
+	    UNAME_MACHINE=i386
+	else
+	    UNAME_MACHINE="$cputype"
+	fi
+	echo ${UNAME_MACHINE}-unknown-plan9
 	exit ;;
     i*86:OS/2:*:*)
 	# If we were able to find `uname', then EMX Unix compatibility

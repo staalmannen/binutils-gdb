@@ -632,6 +632,10 @@ case "${targ}" in
     targ_defvec=i386_elf32_vec
     targ_selvecs="iamcu_elf32_vec"
     ;;
+  i[3456]86-*-plan9)
+    targ_defvec=i386_plan9_vec
+    targ_selvecs="i386_plan9_vec"
+    ;;
   i[3-7]86-*-linux-*)
     targ_defvec=i386_elf32_vec
     targ_selvecs="iamcu_elf32_vec i386_pei_vec"
