@@ -739,17 +739,17 @@ msgstr ""
 msgid "Unrecognized or unsupported floating point constant"
 msgstr ""
 
-#: config/obj-aout.c:81
+#: config/obj-aout.c:81 config/obj-plan9.c:164
 #, c-format
 msgid "Attempt to put a common symbol into set %s"
 msgstr ""
 
-#: config/obj-aout.c:85
+#: config/obj-aout.c:85 config/obj-plan9.c:168
 #, c-format
 msgid "Attempt to put an undefined symbol into set %s"
 msgstr ""
 
-#: config/obj-aout.c:112 config/obj-coff.c:1376
+#: config/obj-aout.c:112 config/obj-plan9.c:199 config/obj-coff.c:1376
 #, c-format
 msgid "Symbol `%s' can not be both weak and common"
 msgstr ""

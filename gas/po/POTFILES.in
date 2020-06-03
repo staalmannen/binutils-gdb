@@ -34,6 +34,8 @@ config/obj-macho.c
 config/obj-macho.h
 config/obj-multi.c
 config/obj-multi.h
+config/obj-plan9.c
+config/obj-plan9.h
 config/obj-som.c
 config/obj-som.h
 config/tc-aarch64.c

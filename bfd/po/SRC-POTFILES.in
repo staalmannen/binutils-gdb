@@ -331,6 +331,7 @@ pei-ppc.c
 pei-sh.c
 pei-x86_64.c
 peicode.h
+plan9-i386.c
 plugin.c
 plugin.h
 ppcboot.c
