@@ -1,0 +1,22 @@
+OUTPUT_FORMAT("plan9-i386")
+OUTPUT_ARCH(i386)
+SECTIONS
+{
+  .text :
+  {
+    CREATE_OBJECT_SYMBOLS
+    *(.text)
+  }
+  .data :
+  {
+    *(.data)
+  }
+  .bss :
+  {
+    ;
+    *(.bss)
+    *(COMMON)
+    ;
+    ;
+  }
+}

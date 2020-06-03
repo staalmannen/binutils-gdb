@@ -223,6 +223,7 @@ pei-mips.c
 pei-ppc.c
 pei-sh.c
 peicode.h
+plan9-i386.c
 ppcboot.c
 reloc.c
 reloc16.c

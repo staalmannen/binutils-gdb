@@ -354,116 +354,117 @@ msgstr ""
 #. * This should never happen.
 #.
 #: atof-generic.c:437 config/tc-a29k.c:544 config/tc-i860.c:340
-#: config/tc-i860.c:832 config/tc-m68k.c:3176 config/tc-m68k.c:3205
-#: config/tc-sparc.c:2543
+#: config/tc-i860.c:832 config/tc-m68k.c:3180 config/tc-m68k.c:3209
+#: config/tc-sparc.c:2544
 msgid "failed sanity check."
 msgstr ""
 
-#: cond.c:77
+#: cond.c:79
 msgid "invalid identifier for \".ifdef\""
 msgstr ""
 
-#: cond.c:131
+#: cond.c:133
 msgid "non-constant expression in \".if\" statement"
 msgstr ""
 
-#: cond.c:227
+#: cond.c:229
 msgid "bad format for ifc or ifnc"
 msgstr ""
 
-#: cond.c:261
+#: cond.c:260
 msgid "\".elseif\" without matching \".if\" - ignored"
 msgstr ""
 
-#: cond.c:266
+#: cond.c:264
 msgid "\".elseif\" after \".else\" - ignored"
 msgstr ""
 
-#: cond.c:269 cond.c:378
+#: cond.c:267 cond.c:375
 msgid "here is the previous \"else\""
 msgstr ""
 
-#: cond.c:272 cond.c:381
+#: cond.c:270 cond.c:378
 msgid "here is the previous \"if\""
 msgstr ""
 
-#: cond.c:305
+#: cond.c:299
 msgid "non-constant expression in \".elseif\" statement"
 msgstr ""
 
-#: cond.c:340
+#: cond.c:338
 msgid "\".endif\" without \".if\""
 msgstr ""
 
-#: cond.c:370
+#: cond.c:368
 msgid ".else without matching .if - ignored"
 msgstr ""
 
-#: cond.c:375
+#: cond.c:372
 msgid "duplicate \"else\" - ignored"
 msgstr ""
 
-#: cond.c:426
+#: cond.c:424
 msgid ".ifeqs syntax error"
 msgstr ""
 
-#: cond.c:509
+#: cond.c:507
 msgid "end of macro inside conditional"
 msgstr ""
 
-#: cond.c:511
+#: cond.c:509
 msgid "end of file inside conditional"
 msgstr ""
 
-#: cond.c:514
+#: cond.c:512
 msgid "here is the start of the unterminated conditional"
 msgstr ""
 
-#: cond.c:518
+#: cond.c:516
 msgid "here is the \"else\" of the unterminated conditional"
 msgstr ""
 
-#: config/obj-aout.c:162
+#: config/obj-aout.c:162 config/obj-plan9.c:164
 #, c-format
 msgid "Attempt to put a common symbol into set %s"
 msgstr ""
 
-#: config/obj-aout.c:166
+#: config/obj-aout.c:166 config/obj-plan9.c:168
 #, c-format
 msgid "Attempt to put an undefined symbol into set %s"
 msgstr ""
 
-#: config/obj-aout.c:197 config/obj-coff.c:1246 config/obj-elf.c:1739
-#: ecoff.c:3647
+#: config/obj-aout.c:197 config/obj-coff.c:1252 config/obj-elf.c:1739
+#: config/obj-plan9.c:199 ecoff.c:3648
 #, c-format
 msgid "Symbol `%s' can not be both weak and common"
 msgstr ""
 
-#: config/obj-aout.c:255 config/obj-coff.c:1982
+#: config/obj-aout.c:255 config/obj-coff.c:1988 config/obj-plan9.c:257
 msgid "unresolved relocation"
 msgstr ""
 
-#: config/obj-aout.c:257 config/obj-coff.c:1984
+#: config/obj-aout.c:257 config/obj-coff.c:1990 config/obj-plan9.c:259
 #, c-format
 msgid "bad relocation: symbol `%s' not in symbol table"
 msgstr ""
 
-#: config/obj-aout.c:344
+#: config/obj-aout.c:344 config/obj-plan9.c:353
 #, c-format
 msgid "%s: bad type for weak symbol"
 msgstr ""
 
-#: config/obj-aout.c:458 config/obj-coff.c:2913 write.c:1868
+#: config/obj-aout.c:458 config/obj-coff.c:2919 config/obj-plan9.c:472
+#: write.c:1889
 #, c-format
 msgid "%s: global symbols not supported in common sections"
 msgstr ""
 
-#: config/obj-aout.c:524
+#: config/obj-aout.c:524 config/obj-plan9.c:545
 #, c-format
 msgid "Local symbol %s never defined."
 msgstr ""
 
-#: config/obj-aout.c:612
+#: config/obj-aout.c:612 config/obj-plan9.c:629
 msgid "subsegment index too high"
 msgstr ""
 

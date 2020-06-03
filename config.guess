@@ -126,6 +126,17 @@ UNAME_VERSION=`(uname -v) 2>/dev/null` || UNAME_VERSION=unknown
 # Note: order is significant - the case branches are not exclusive.
 
 case "${UNAME_MACHINE}:${UNAME_SYSTEM}:${UNAME_RELEASE}:${UNAME_VERSION}" in
+    *:Plan9:*:*)
+	case "${cputype}" in
+	    68000) cpu=m68k ;;
+	    68020) cpu=m68k ;;
+	    386) cpu=i386 ;;
+	    arm) cpu=armel ;;
+	    spim) cpu=mipsel ;;
+	    *) cpu=${cputype} ;;
+	esac
+	echo "${cpu}-lucent-plan9"
+	exit 0 ;;
     *:NetBSD:*:*)
 	# Netbsd (nbsd) targets should (where applicable) match one or
 	# more of the tupples: *-*-netbsdelf*, *-*-netbsdaout*,

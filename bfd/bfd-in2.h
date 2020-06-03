@@ -3228,7 +3228,8 @@ enum bfd_flavour {
   bfd_target_versados_flavour,
   bfd_target_msdos_flavour,
   bfd_target_ovax_flavour,
-  bfd_target_evax_flavour
+  bfd_target_evax_flavour,
+  bfd_target_plan9_flavour
 };
 
 enum bfd_endian { BFD_ENDIAN_BIG, BFD_ENDIAN_LITTLE, BFD_ENDIAN_UNKNOWN };

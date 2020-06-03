@@ -249,6 +249,7 @@ BFD32_BACKENDS = \
 	pe-mips.lo \
 	pei-mips.lo \
 	peigen.lo \
+	plan9-i386.lo \
 	ppcboot.lo \
 	reloc16.lo \
 	riscix.lo \
@@ -385,6 +386,7 @@ BFD32_BACKENDS_CFILES = \
 	pei-sh.c \
 	pe-mips.c \
 	pei-mips.c \
+	plan9-i386.c \
 	ppcboot.c \
 	reloc16.c \
 	riscix.c \
@@ -1214,6 +1216,8 @@ pei-mips.lo: pei-mips.c $(INCDIR)/filenames.h pe-mips.c \
   $(INCDIR)/coff/mipspe.h $(INCDIR)/coff/internal.h $(INCDIR)/coff/pe.h \
   libcoff.h $(INCDIR)/bfdlink.h coffcode.h peicode.h \
   libpei.h
+plan9-i386.lo: plan9-i386.c $(INCDIR)/filenames.h $(INCDIR)/bfdlink.h \
+  libaout.h
 ppcboot.lo: ppcboot.c $(INCDIR)/filenames.h
 reloc16.lo: reloc16.c $(INCDIR)/filenames.h $(INCDIR)/bfdlink.h \
   genlink.h $(INCDIR)/coff/internal.h libcoff.h

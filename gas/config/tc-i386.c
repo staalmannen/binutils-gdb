@@ -776,7 +776,7 @@ set_cpu_arch (dummy)
 
 const pseudo_typeS md_pseudo_table[] =
 {
-#if !defined(OBJ_AOUT) && !defined(USE_ALIGN_PTWO)
+#if !defined(OBJ_AOUT) && !defined(OBJ_PLAN9) && !defined(USE_ALIGN_PTWO)
   {"align", s_align_bytes, 0},
 #else
   {"align", s_align_ptwo, 0},
@@ -3285,10 +3285,10 @@ i386_immediate (imm_start)
 	if ((exp->X_add_number & ~(((addressT) 2 << 31) - 1)) == 0)
 	  exp->X_add_number = (exp->X_add_number ^ ((addressT) 1 << 31)) - ((addressT) 1 << 31);
     }
-#if (defined (OBJ_AOUT) || defined (OBJ_MAYBE_AOUT))
+#if (defined (OBJ_AOUT) || defined (OBJ_PLAN9) || defined (OBJ_MAYBE_AOUT))
   else if (1
 #ifdef BFD_ASSEMBLER
-	   && OUTPUT_FLAVOR == bfd_target_aout_flavour
+	   && (OUTPUT_FLAVOR == bfd_target_aout_flavour || OUTPUT_FLAVOR == bfd_target_plan9_flavour)
 #endif
 	   && exp_seg != text_section
 	   && exp_seg != data_section
@@ -3496,10 +3496,10 @@ i386_displacement (disp_start, disp_end)
       exp->X_op_symbol = (symbolS *) 0;
     }
 
-#if (defined (OBJ_AOUT) || defined (OBJ_MAYBE_AOUT))
+#if (defined (OBJ_AOUT) || defined (OBJ_PLAN9) || defined (OBJ_MAYBE_AOUT))
   if (exp->X_op != O_constant
 #ifdef BFD_ASSEMBLER
-      && OUTPUT_FLAVOR == bfd_target_aout_flavour
+      && (OUTPUT_FLAVOR == bfd_target_aout_flavour || OUTPUT_FLAVOR == bfd_target_plan9_flavour)
 #endif
       && exp_seg != text_section
       && exp_seg != data_section
@@ -4208,7 +4208,7 @@ md_apply_fix3 (fixP, valp, seg)
        || fixP->fx_r_type == BFD_RELOC_8_PCREL)
       && fixP->fx_addsy && !use_rela_relocations)
     {
-#ifndef OBJ_AOUT
+#if (!defined(OBJ_AOUT) && !defined(OBJ_PLAN9))
       if (OUTPUT_FLAVOR == bfd_target_elf_flavour
 #ifdef TE_PE
 	  || OUTPUT_FLAVOR == bfd_target_coff_flavour
@@ -4642,8 +4642,8 @@ md_section_align (segment, size)
      valueT size;
 {
 #ifdef BFD_ASSEMBLER
-#if (defined (OBJ_AOUT) || defined (OBJ_MAYBE_AOUT))
-  if (OUTPUT_FLAVOR == bfd_target_aout_flavour)
+#if (defined (OBJ_AOUT) || defined (OBJ_PLAN9) || defined (OBJ_MAYBE_AOUT))
+  if (OUTPUT_FLAVOR == bfd_target_aout_flavour || OUTPUT_FLAVOR == bfd_target_plan9_flavour)
     {
       /* For a.out, force the section size to be aligned.  If we don't do
 	 this, BFD will align it for us, but it will not write out the
