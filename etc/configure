@@ -11,7 +11,7 @@
 ## -------------------- ##
 ## M4sh Initialization. ##
 ## -------------------- ##
-
+GREP=grep
 # Be more Bourne compatible
 DUALCASE=1; export DUALCASE # for MKS sh
 if test -n "${ZSH_VERSION+set}" && (emulate sh) >/dev/null 2>&1; then :
@@ -1071,8 +1071,8 @@ test "$silent" = yes && exec 6>/dev/null
 
 
 ac_pwd=`pwd` && test -n "$ac_pwd" &&
-ac_ls_di=`ls -di .` &&
-ac_pwd_ls_di=`cd "$ac_pwd" && ls -di .` ||
+ac_ls_di=`ls -d .` &&
+ac_pwd_ls_di=`cd "$ac_pwd" && ls -d .` ||
   as_fn_error "working directory cannot be determined"
 test "X$ac_ls_di" = "X$ac_pwd_ls_di" ||
   as_fn_error "pwd does not report name of working directory"

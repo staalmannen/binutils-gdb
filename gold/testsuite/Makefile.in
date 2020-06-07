@@ -1658,7 +1658,7 @@ weak_undef_test_LINK = $(CXXLD) $(AM_CXXFLAGS) $(CXXFLAGS) \
 DEFAULT_INCLUDES = -I.@am__isrc@ -I$(top_builddir)
 depcomp = $(SHELL) $(top_srcdir)/../depcomp
 am__depfiles_maybe = depfiles
-am__mv = mv -f
+am__mv = mv
 COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
 	$(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
 CCLD = $(CC)
@@ -4465,12 +4465,12 @@ uninstall-am:
 @GCC_TRUE@@NATIVE_LINKER_TRUE@	(for i in `seq 1 70000`; do \
 @GCC_TRUE@@NATIVE_LINKER_TRUE@	   echo "int var_$$i __attribute__((section(\"section_$$i\"))) = $$i;"; \
 @GCC_TRUE@@NATIVE_LINKER_TRUE@	 done) > $@.tmp
-@GCC_TRUE@@NATIVE_LINKER_TRUE@	mv -f $@.tmp $@
+@GCC_TRUE@@NATIVE_LINKER_TRUE@	mv $@.tmp $@
 @GCC_TRUE@@NATIVE_LINKER_TRUE@many_sections_check.h:
 @GCC_TRUE@@NATIVE_LINKER_TRUE@	(for i in `seq 1 1000 70000`; do \
 @GCC_TRUE@@NATIVE_LINKER_TRUE@	   echo "assert(var_$$i == $$i);"; \
 @GCC_TRUE@@NATIVE_LINKER_TRUE@	 done) > $@.tmp
-@GCC_TRUE@@NATIVE_LINKER_TRUE@	mv -f $@.tmp $@
+@GCC_TRUE@@NATIVE_LINKER_TRUE@	mv $@.tmp $@
 @GCC_TRUE@@NATIVE_LINKER_TRUE@many_sections_r_test.o: many_sections_test.o gcctestdir/ld
 @GCC_TRUE@@NATIVE_LINKER_TRUE@	gcctestdir/ld -r -o $@ many_sections_test.o
 @GCC_TRUE@@NATIVE_LINKER_TRUE@many_sections_r_test: many_sections_r_test.o gcctestdir/ld
@@ -4775,7 +4775,7 @@ uninstall-am:
 @GCC_TRUE@@NATIVE_LINKER_TRUE@@PLUGINS_TRUE@two_file_test_1c.syms: two_file_test_1.syms two_file_test_1c.o
 @GCC_TRUE@@NATIVE_LINKER_TRUE@@PLUGINS_TRUE@	cp two_file_test_1.syms $@.tmp
 @GCC_TRUE@@NATIVE_LINKER_TRUE@@PLUGINS_TRUE@	grep "_Z4t16av" two_file_test_1b.syms >> $@.tmp
-@GCC_TRUE@@NATIVE_LINKER_TRUE@@PLUGINS_TRUE@	mv -f $@.tmp $@
+@GCC_TRUE@@NATIVE_LINKER_TRUE@@PLUGINS_TRUE@	mv $@.tmp $@
 @GCC_TRUE@@NATIVE_LINKER_TRUE@@PLUGINS_TRUE@two_file_test_1c.o: two_file_test_1.o
 @GCC_TRUE@@NATIVE_LINKER_TRUE@@PLUGINS_TRUE@	cp two_file_test_1.o $@
 
@@ -5043,7 +5043,7 @@ uninstall-am:
 @DEFAULT_TARGET_X86_64_TRUE@@GCC_TRUE@@NATIVE_LINKER_TRUE@		    two_file_test_2.o two_file_test_main.o gcctestdir/ld
 @DEFAULT_TARGET_X86_64_TRUE@@GCC_TRUE@@NATIVE_LINKER_TRUE@	cp -f two_file_test_2_v1.o two_file_test_tmp_4.o
 @DEFAULT_TARGET_X86_64_TRUE@@GCC_TRUE@@NATIVE_LINKER_TRUE@	$(CXXLINK) -Wl,--incremental-full,--incremental-patch=100 -Bgcctestdir/ two_file_test_1.o two_file_test_1b.o two_file_test_tmp_4.o two_file_test_main.o
-@DEFAULT_TARGET_X86_64_TRUE@@GCC_TRUE@@NATIVE_LINKER_TRUE@	mv -f incremental_test_4 incremental_test_4.base
+@DEFAULT_TARGET_X86_64_TRUE@@GCC_TRUE@@NATIVE_LINKER_TRUE@	mv incremental_test_4 incremental_test_4.base
 @DEFAULT_TARGET_X86_64_TRUE@@GCC_TRUE@@NATIVE_LINKER_TRUE@	@sleep 1
 @DEFAULT_TARGET_X86_64_TRUE@@GCC_TRUE@@NATIVE_LINKER_TRUE@	cp -f two_file_test_2.o two_file_test_tmp_4.o
 @DEFAULT_TARGET_X86_64_TRUE@@GCC_TRUE@@NATIVE_LINKER_TRUE@	$(CXXLINK) -Wl,--incremental-update,--incremental-base=incremental_test_4.base -Bgcctestdir/ two_file_test_1.o two_file_test_1b.o two_file_test_tmp_4.o two_file_test_main.o

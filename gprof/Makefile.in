@@ -82,7 +82,7 @@ am__DEPENDENCIES_1 =
 DEFAULT_INCLUDES = -I.@am__isrc@
 depcomp = $(SHELL) $(top_srcdir)/../depcomp
 am__depfiles_maybe = depfiles
-am__mv = mv -f
+am__mv = mv
 COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
 	$(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
 LTCOMPILE = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) \
@@ -1040,7 +1040,7 @@ gprof.1: $(srcdir)/gprof.texi config.texi
 	-$(TEXI2POD) $(MANCONF) -Dgprof < $(srcdir)/gprof.texi > gprof.pod
 	-($(POD2MAN) gprof.pod | \
 	       sed -e '/^.if n .na/d' > $@.T$$$$ && \
-	       mv -f $@.T$$$$ $@) || \
+	       mv $@.T$$$$ $@) || \
 	       (rm -f $@.T$$$$ && exit 1)
 	rm -f gprof.pod
 

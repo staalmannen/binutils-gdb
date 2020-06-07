@@ -836,7 +836,7 @@ many_sections_define.h:
 	(for i in `seq 1 70000`; do \
 	   echo "int var_$$i __attribute__((section(\"section_$$i\"))) = $$i;"; \
 	 done) > $@.tmp
-	mv -f $@.tmp $@
+	mv $@.tmp $@
 
 BUILT_SOURCES += many_sections_check.h
 MOSTLYCLEANFILES += many_sections_check.h
@@ -844,7 +844,7 @@ many_sections_check.h:
 	(for i in `seq 1 1000 70000`; do \
 	   echo "assert(var_$$i == $$i);"; \
 	 done) > $@.tmp
-	mv -f $@.tmp $@
+	mv $@.tmp $@
 
 check_PROGRAMS += many_sections_r_test
 many_sections_r_test.o: many_sections_test.o gcctestdir/ld
@@ -1478,7 +1478,7 @@ plugin_test_9.err: two_file_test_main.o two_file_test_1c.syms two_file_test_2.sy
 two_file_test_1c.syms: two_file_test_1.syms two_file_test_1c.o
 	cp two_file_test_1.syms $@.tmp
 	grep "_Z4t16av" two_file_test_1b.syms >> $@.tmp
-	mv -f $@.tmp $@
+	mv $@.tmp $@
 # Make a copy of two_file_test_1.o, which does not define the symbol _Z4t16av.
 MOSTLYCLEANFILES += two_file_test_1c.o
 two_file_test_1c.o: two_file_test_1.o
@@ -1992,7 +1992,7 @@ incremental_test_4: two_file_test_1.o two_file_test_1b.o two_file_test_2_v1.o \
 		    two_file_test_2.o two_file_test_main.o gcctestdir/ld
 	cp -f two_file_test_2_v1.o two_file_test_tmp_4.o
 	$(CXXLINK) -Wl,--incremental-full,--incremental-patch=100 -Bgcctestdir/ two_file_test_1.o two_file_test_1b.o two_file_test_tmp_4.o two_file_test_main.o
-	mv -f incremental_test_4 incremental_test_4.base
+	mv incremental_test_4 incremental_test_4.base
 	@sleep 1
 	cp -f two_file_test_2.o two_file_test_tmp_4.o
 	$(CXXLINK) -Wl,--incremental-update,--incremental-base=incremental_test_4.base -Bgcctestdir/ two_file_test_1.o two_file_test_1b.o two_file_test_tmp_4.o two_file_test_main.o

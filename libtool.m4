@@ -131,7 +131,7 @@ cc_basename=`$ECHO "$cc_temp" | $SED "s%.*/%%; s%^$host_alias-%%"`
 # sensibly after `m4_require([_LT_FILEUTILS_DEFAULTS])'.
 m4_defun([_LT_FILEUTILS_DEFAULTS],
 [: ${CP="cp -f"}
-: ${MV="mv -f"}
+: ${MV="mv"}
 : ${RM="rm -f"}
 ])# _LT_FILEUTILS_DEFAULTS
 
@@ -754,7 +754,7 @@ _LT_EOF
   sed -n '/^# Generated shell functions inserted here/,$p' "$ltmain" >> "$cfgfile" \
     || (rm -f "$cfgfile"; exit 1)
 
-  mv -f "$cfgfile" "$ofile" ||
+  mv "$cfgfile" "$ofile" ||
     (rm -f "$ofile" && cp "$cfgfile" "$ofile" && rm -f "$cfgfile")
   chmod +x "$ofile"
 ],
@@ -3451,7 +3451,7 @@ _LT_EOF
     if AC_TRY_EVAL(NM conftest.$ac_objext \| "$lt_cv_sys_global_symbol_pipe" \> $nlist) && test -s "$nlist"; then
       # Try sorting and uniquifying the output.
       if sort "$nlist" | uniq > "$nlist"T; then
-	mv -f "$nlist"T "$nlist"
+	mv "$nlist"T "$nlist"
       else
 	rm -f "$nlist"T
       fi

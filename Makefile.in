@@ -2494,7 +2494,7 @@ installdirs: mkinstalldirs
 dir.info: do-install-info
 	if [ -f $(srcdir)/texinfo/gen-info-dir ] ; then \
 	  $(srcdir)/texinfo/gen-info-dir $(DESTDIR)$(infodir) $(srcdir)/texinfo/dir.info-template > dir.info.new ; \
-	  mv -f dir.info.new dir.info ; \
+	  mv dir.info.new dir.info ; \
 	else true ; \
 	fi
 

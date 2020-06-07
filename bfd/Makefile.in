@@ -118,7 +118,7 @@ libbfd_la_LINK = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) \
 DEFAULT_INCLUDES = -I.@am__isrc@
 depcomp = $(SHELL) $(top_srcdir)/../depcomp
 am__depfiles_maybe = depfiles
-am__mv = mv -f
+am__mv = mv
 COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
 	$(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
 LTCOMPILE = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) \
@@ -1883,28 +1883,28 @@ libbfd.a: stamp-lib ; @true
 targmatch.h: config.bfd targmatch.sed
 	rm -f targmatch.h
 	sed -f $(srcdir)/targmatch.sed < $(srcdir)/config.bfd > targmatch.new
-	mv -f targmatch.new targmatch.h
+	mv targmatch.new targmatch.h
 
 # When compiling archures.c and targets.c, supply the default target
 # info from configure.
 
 targets.lo: targets.c Makefile
 @am__fastdepCC_TRUE@	$(LTCOMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ $(TDEFAULTS) $(srcdir)/targets.c
-@am__fastdepCC_TRUE@	mv -f $(DEPDIR)/$*.Tpo $(DEPDIR)/$*.Plo
+@am__fastdepCC_TRUE@	mv $(DEPDIR)/$*.Tpo $(DEPDIR)/$*.Plo
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	source='targets.c' object='$@' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(LTCOMPILE) -c -o $@ $(TDEFAULTS) $(srcdir)/targets.c
 
 archures.lo: archures.c Makefile
 @am__fastdepCC_TRUE@	$(LTCOMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ $(TDEFAULTS) $(srcdir)/archures.c
-@am__fastdepCC_TRUE@	mv -f $(DEPDIR)/$*.Tpo $(DEPDIR)/$*.Plo
+@am__fastdepCC_TRUE@	mv $(DEPDIR)/$*.Tpo $(DEPDIR)/$*.Plo
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	source='archures.c' object='$@' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(LTCOMPILE) -c -o $@ $(TDEFAULTS) $(srcdir)/archures.c
 
 dwarf2.lo: dwarf2.c Makefile
 @am__fastdepCC_TRUE@	$(LTCOMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ -DDEBUGDIR=\"$(DEBUGDIR)\" $(srcdir)/dwarf2.c
-@am__fastdepCC_TRUE@	mv -f $(DEPDIR)/$*.Tpo $(DEPDIR)/$*.Plo
+@am__fastdepCC_TRUE@	mv $(DEPDIR)/$*.Tpo $(DEPDIR)/$*.Plo
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	source='dwarf2.c' object='$@' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(LTCOMPILE) -c -o $@ -DDEBUGDIR=\"$(DEBUGDIR)\" $(srcdir)/dwarf2.c
@@ -1912,37 +1912,37 @@ dwarf2.lo: dwarf2.c Makefile
 elf32-target.h : elfxx-target.h
 	rm -f elf32-target.h
 	sed -e s/NN/32/g < $(srcdir)/elfxx-target.h > elf32-target.new
-	mv -f elf32-target.new elf32-target.h
+	mv elf32-target.new elf32-target.h
 
 elf64-target.h : elfxx-target.h
 	rm -f elf64-target.h
 	sed -e s/NN/64/g < $(srcdir)/elfxx-target.h > elf64-target.new
-	mv -f elf64-target.new elf64-target.h
+	mv elf64-target.new elf64-target.h
 
 elf32-ia64.c : elfnn-ia64.c
 	rm -f elf32-ia64.c
 	sed -e s/NN/32/g < $(srcdir)/elfnn-ia64.c > elf32-ia64.new
-	mv -f elf32-ia64.new elf32-ia64.c
+	mv elf32-ia64.new elf32-ia64.c
 
 elf64-ia64.c : elfnn-ia64.c
 	rm -f elf64-ia64.c
 	sed -e s/NN/64/g < $(srcdir)/elfnn-ia64.c > elf64-ia64.new
-	mv -f elf64-ia64.new elf64-ia64.c
+	mv elf64-ia64.new elf64-ia64.c
 
 peigen.c : peXXigen.c
 	rm -f peigen.c
 	sed -e s/XX/pe/g < $(srcdir)/peXXigen.c > peigen.new
-	mv -f peigen.new peigen.c
+	mv peigen.new peigen.c
 
 pepigen.c : peXXigen.c
 	rm -f pepigen.c
 	sed -e s/XX/pep/g < $(srcdir)/peXXigen.c > pepigen.new
-	mv -f pepigen.new pepigen.c
+	mv pepigen.new pepigen.c
 
 pex64igen.c: peXXigen.c
 	rm -f pex64igen.c
 	sed -e s/XX/pex64/g < $(srcdir)/peXXigen.c > pex64igen.new
-	mv -f pex64igen.new pex64igen.c
+	mv pex64igen.new pex64igen.c
 $(BFD32_LIBS) \
  $(BFD64_LIBS) \
  $(ALL_MACHINES) \

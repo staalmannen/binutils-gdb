@@ -1300,8 +1300,8 @@ test "$silent" = yes && exec 6>/dev/null
 
 
 ac_pwd=`pwd` && test -n "$ac_pwd" &&
-ac_ls_di=`ls -di .` &&
-ac_pwd_ls_di=`cd "$ac_pwd" && ls -di .` ||
+ac_ls_di=`ls -d .` &&
+ac_pwd_ls_di=`cd "$ac_pwd" && ls -d .` ||
   as_fn_error "working directory cannot be determined"
 test "X$ac_ls_di" = "X$ac_pwd_ls_di" ||
   as_fn_error "pwd does not report name of working directory"
@@ -1711,7 +1711,7 @@ $as_echo "$ac_try_echo"; } >&5
   if test -s conftest.err; then
     grep -v '^ *+' conftest.err >conftest.er1
     cat conftest.er1 >&5
-    mv -f conftest.er1 conftest.err
+    mv conftest.er1 conftest.err
   fi
   $as_echo "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
   test $ac_status = 0; } && {
@@ -1749,7 +1749,7 @@ $as_echo "$ac_try_echo"; } >&5
   if test -s conftest.err; then
     grep -v '^ *+' conftest.err >conftest.er1
     cat conftest.er1 >&5
-    mv -f conftest.er1 conftest.err
+    mv conftest.er1 conftest.err
   fi
   $as_echo "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
   test $ac_status = 0; } && {
@@ -1787,7 +1787,7 @@ $as_echo "$ac_try_echo"; } >&5
   if test -s conftest.err; then
     grep -v '^ *+' conftest.err >conftest.er1
     cat conftest.er1 >&5
-    mv -f conftest.er1 conftest.err
+    mv conftest.er1 conftest.err
   fi
   $as_echo "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
   test $ac_status = 0; } && {
@@ -2160,7 +2160,7 @@ fi
 ac_ext=c
 ac_cpp='$CPP $CPPFLAGS'
 ac_compile='$CC -c $CFLAGS $CPPFLAGS conftest.$ac_ext >&5'
-ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS >&5'
+ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS -lbsd >&5'
 ac_compiler_gnu=$ac_cv_c_compiler_gnu
 
 
@@ -3694,7 +3694,7 @@ fi
 ac_ext=c
 ac_cpp='$CPP $CPPFLAGS'
 ac_compile='$CC -c $CFLAGS $CPPFLAGS conftest.$ac_ext >&5'
-ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS >&5'
+ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS -lbsd >&5'
 ac_compiler_gnu=$ac_cv_c_compiler_gnu
 if test -n "$ac_tool_prefix"; then
   # Extract the first word of "${ac_tool_prefix}gcc", so it can be a program name with args.
@@ -4453,7 +4453,7 @@ fi
 ac_ext=c
 ac_cpp='$CPP $CPPFLAGS'
 ac_compile='$CC -c $CFLAGS $CPPFLAGS conftest.$ac_ext >&5'
-ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS >&5'
+ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS -lbsd >&5'
 ac_compiler_gnu=$ac_cv_c_compiler_gnu
 
 ac_ext=cpp
@@ -4710,7 +4710,7 @@ fi
 ac_ext=c
 ac_cpp='$CPP $CPPFLAGS'
 ac_compile='$CC -c $CFLAGS $CPPFLAGS conftest.$ac_ext >&5'
-ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS >&5'
+ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS -lbsd >&5'
 ac_compiler_gnu=$ac_cv_c_compiler_gnu
 
 
@@ -15190,7 +15190,7 @@ which seems to be undefined.  Please make sure it is defined." >&2;}
     "Makefile":F) sed "$extrasub_build" Makefile |
    sed "$extrasub_host" |
    sed "$extrasub_target" > mf$$
-   mv -f mf$$ Makefile ;;
+   mv mf$$ Makefile ;;
 
   esac
 done # for ac_tag

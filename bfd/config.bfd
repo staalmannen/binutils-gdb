@@ -670,6 +670,9 @@ case "${targ}" in
     targ_defvec=bfd_elf32_i386_vxworks_vec
     targ_underscore=yes
     ;;
+  i[3-7]86-*-plan9)
+    targ_defvec=plan9_i386_vec
+    ;;
   i[3-7]86-*-chaos)
     targ_defvec=bfd_elf32_i386_vec
     targ_selfvecs=i386chaos_vec

@@ -169,7 +169,8 @@ DESCRIPTION
 .  bfd_target_mach_o_flavour,
 .  bfd_target_pef_flavour,
 .  bfd_target_pef_xlib_flavour,
-.  bfd_target_sym_flavour
+.  bfd_target_sym_flavour,
+.  bfd_target_plan9_flavour
 .};
 .
 .enum bfd_endian { BFD_ENDIAN_BIG, BFD_ENDIAN_LITTLE, BFD_ENDIAN_UNKNOWN };
@@ -818,6 +819,7 @@ extern const bfd_target oasys_vec;
 extern const bfd_target or32coff_big_vec;
 extern const bfd_target pc532machaout_vec;
 extern const bfd_target pc532netbsd_vec;
+extern const bfd_target plan9_i386_vec;
 extern const bfd_target pdp11_aout_vec;
 extern const bfd_target pef_vec;
 extern const bfd_target pef_xlib_vec;
@@ -1245,6 +1247,7 @@ static const bfd_target * const _bfd_target_vector[] =
 #ifdef BFD64
 	&rs6000coff64_vec,
 #endif
+	&plan9_i386_vec,
 	&rs6000coff_vec,
 	&shcoff_small_vec,
 	&shcoff_vec,

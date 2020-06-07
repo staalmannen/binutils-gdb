@@ -529,7 +529,7 @@ STAGESTUFF = *.@OBJEXT@ ldscripts/* e*.c
 ldgram.@OBJEXT@: ldgram.c
 if am__fastdepCC
 	$(COMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ `test -f ldgram.c || echo $(srcdir)/`ldgram.c $(NO_WERROR)
-	mv -f $(DEPDIR)/$*.Tpo $(DEPDIR)/$*.Po
+	mv $(DEPDIR)/$*.Tpo $(DEPDIR)/$*.Po
 else
 if AMDEP
 	source='ldgram.c' object='$@' libtool=no @AMDEPBACKSLASH@
@@ -541,7 +541,7 @@ endif
 ldlex-wrapper.@OBJEXT@: ldlex-wrapper.c ldlex.c
 if am__fastdepCC
 	$(COMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ $(srcdir)/ldlex-wrapper.c $(NO_WERROR)
-	mv -f $(DEPDIR)/$*.Tpo $(DEPDIR)/$*.Po
+	mv $(DEPDIR)/$*.Tpo $(DEPDIR)/$*.Po
 else
 if AMDEP
 	source='ldlex-wrapper.c' object='$@' libtool=no @AMDEPBACKSLASH@
@@ -553,7 +553,7 @@ endif
 deffilep.@OBJEXT@: deffilep.c
 if am__fastdepCC
 	$(COMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ `test -f deffilep.c || echo $(srcdir)/`deffilep.c $(NO_WERROR)
-	mv -f $(DEPDIR)/$*.Tpo $(DEPDIR)/$*.Po
+	mv $(DEPDIR)/$*.Tpo $(DEPDIR)/$*.Po
 else
 if AMDEP
 	source='deffilep.c' object='$@' libtool=no @AMDEPBACKSLASH@
@@ -579,7 +579,7 @@ if am__fastdepCC
 	  -DBINDIR='"$(bindir)"' -DTOOLBINDIR='"$(tooldir)/bin"' \
 	  -DTARGET='"@target@"' @TARGET_SYSTEM_ROOT_DEFINE@ \
 	  $(srcdir)/ldmain.c
-	mv -f $(DEPDIR)/$*.Tpo $(DEPDIR)/$*.Po
+	mv $(DEPDIR)/$*.Tpo $(DEPDIR)/$*.Po
 else
 if AMDEP
 	source='ldmain.c' object='$@' libtool=no @AMDEPBACKSLASH@
@@ -596,7 +596,7 @@ if am__fastdepCC
 	$(COMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ \
 	-DSCRIPTDIR='"$(scriptdir)"' -DBINDIR='"$(bindir)"' -DTOOLBINDIR='"$(tooldir)/bin"' \
 	 $(srcdir)/ldfile.c
-	mv -f $(DEPDIR)/$*.Tpo $(DEPDIR)/$*.Po
+	mv $(DEPDIR)/$*.Tpo $(DEPDIR)/$*.Po
 else
 if AMDEP
 	source='ldfile.c' object='$@' libtool=no @AMDEPBACKSLASH@
@@ -611,7 +611,7 @@ eelf32_spu.@OBJEXT@: eelf32_spu.c
 if am__fastdepCC
 	$(COMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ \
 	  -DEMBEDSPU="\"`echo embedspu | sed '$(transform)'`\"" eelf32_spu.c
-	mv -f $(DEPDIR)/$*.Tpo $(DEPDIR)/$*.Po
+	mv $(DEPDIR)/$*.Tpo $(DEPDIR)/$*.Po
 else
 if AMDEP
 	source='eelf32_spu.c' object='$@' libtool=no @AMDEPBACKSLASH@
@@ -2142,7 +2142,7 @@ ld.1: $(srcdir)/ld.texinfo configdoc.texi
 	-$(TEXI2POD) $(MANCONF) < $(srcdir)/ld.texinfo > ld.pod
 	-($(POD2MAN) ld.pod | \
 	        sed -e '/^.if n .na/d' > $@.T$$$$ && \
-	        mv -f $@.T$$$$ $@) || \
+	        mv $@.T$$$$ $@) || \
 	        (rm -f $@.T$$$$ && exit 1)
 	rm -f ld.pod
 

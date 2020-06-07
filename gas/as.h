@@ -443,9 +443,15 @@ typedef struct _pseudo_type pseudo_typeS;
 #define __format__ format
 #endif
 
+//Hack for gcc 3.0 bug about pointer to function as argument
+#if __GNUC__ >= 3000
 #define PRINTF_LIKE(FCN) \
   void FCN (const char *format, ...) \
     __attribute__ ((__format__ (__printf__, 1, 2)))
+#else
+#define PRINTF_LIKE(FCN) \
+  void FCN (const char *format, ...)
+#endif
 #define PRINTF_WHERE_LIKE(FCN) \
   void FCN (char *file, unsigned int line, const char *format, ...) \
     __attribute__ ((__format__ (__printf__, 3, 4)))

@@ -772,7 +772,7 @@ as.1: $(srcdir)/as.texinfo asconfig.texi $(CPU_DOCS)
 	-$(TEXI2POD) $(MANCONF) < $(srcdir)/as.texinfo > as.pod
 	-($(POD2MAN) as.pod | \
 	        sed -e '/^.if n .na/d' > $@.T$$$$ && \
-	        mv -f $@.T$$$$ $@) || \
+	        mv $@.T$$$$ $@) || \
 	        (rm -f $@.T$$$$ && exit 1)
 	rm -f as.pod
 

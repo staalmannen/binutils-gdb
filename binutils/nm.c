@@ -805,9 +805,7 @@ print_symbol (bfd *abfd, asymbol *sym, bfd_vma ssize, bfd *archive_bfd)
   struct extended_symbol_info info;
 
   PROGRESS (1);
-
   format->print_symbol_filename (archive_bfd, abfd);
-
   bfd_get_symbol_info (abfd, sym, &syminfo);
   info.sinfo = &syminfo;
   info.ssize = ssize;
@@ -927,7 +925,6 @@ print_symbol (bfd *abfd, asymbol *sym, bfd_vma ssize, bfd *archive_bfd)
 	    printf ("\t%s:%u", filename, lineno);
 	}
     }
-
   putchar ('\n');
 }
 
@@ -990,7 +987,6 @@ print_symbols (bfd *abfd, bfd_boolean is_dynamic, void *minisyms, long symcount,
       sym = bfd_minisymbol_to_symbol (abfd, is_dynamic, from, store);
       if (sym == NULL)
 	bfd_fatal (bfd_get_filename (abfd));
-
       print_symbol (abfd, sym, (bfd_vma) 0, archive_bfd);
     }
 }
@@ -1207,9 +1203,7 @@ display_file (char *filename)
     file->flags |= BFD_DECOMPRESS;
 
   if (bfd_check_format (file, bfd_archive))
-    {
       display_archive (file);
-    }
   else if (bfd_check_format_matches (file, bfd_object, &matching))
     {
       set_print_width (file);
@@ -1536,7 +1530,6 @@ main (int argc, char **argv)
 #if BFD_SUPPORTS_PLUGINS
   bfd_plugin_set_program_name (program_name);
 #endif
-
   START_PROGRESS (program_name, 0);
 
   expandargv (&argc, &argv);

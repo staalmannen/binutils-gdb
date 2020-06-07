@@ -94,7 +94,7 @@ SCRIPTS = $(noinst_SCRIPTS)
 DEFAULT_INCLUDES = -I.@am__isrc@
 depcomp = $(SHELL) $(top_srcdir)/../depcomp
 am__depfiles_maybe = depfiles
-am__mv = mv -f
+am__mv = mv
 COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
 	$(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
 LTCOMPILE = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) \
@@ -515,6 +515,7 @@ OBJ_FORMAT_CFILES = \
 	config/obj-fdpicelf.c \
 	config/obj-macho.c \
 	config/obj-multi.c \
+	config/obj-plan9.c \
 	config/obj-som.c
 
 OBJ_FORMAT_HFILES = \
@@ -526,6 +527,7 @@ OBJ_FORMAT_HFILES = \
 	config/obj-fdpicelf.h \
 	config/obj-macho.h \
 	config/obj-multi.h \
+	config/obj-plan9.h \
 	config/obj-som.h
 
 
@@ -621,7 +623,7 @@ GASLIBS = @OPCODES_LIB@ ../bfd/libbfd.la ../libiberty/libiberty.a
 STAGESTUFF = *.@OBJEXT@ $(noinst_PROGRAMS)
 as_new_SOURCES = $(GAS_CFILES)
 as_new_LDADD = $(TARG_CPU_O) $(OBJ_FORMAT_O) $(ATOF_TARG_O) \
-	$(extra_objects) $(GASLIBS) $(LIBINTL) $(LIBM)
+	$(extra_objects) $(GASLIBS) $(LIBINTL) $(LIBM) -lbsd
 
 as_new_DEPENDENCIES = $(TARG_CPU_O) $(OBJ_FORMAT_O) $(ATOF_TARG_O) \
 	$(extra_objects) $(GASLIBS) $(LIBINTL_DEP)
@@ -636,7 +638,7 @@ EXPECT = expect
 RUNTEST = runtest
 RUNTESTFLAGS = 
 itbl_test_SOURCES = itbl-parse.y itbl-lex.l
-itbl_test_LDADD = itbl-tops.@OBJEXT@ itbl-test.@OBJEXT@ $(GASLIBS) @LEXLIB@
+itbl_test_LDADD = itbl-tops.@OBJEXT@ itbl-test.@OBJEXT@ $(GASLIBS) @LEXLIB@ -lbsd
 
 # CGEN interface.
 CGEN_CPU_PREFIX = @cgen_cpu_prefix@
@@ -777,6 +779,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/obj-fdpicelf.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/obj-macho.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/obj-multi.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/obj-plan9.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/obj-som.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/output-file.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/read.Po@am__quote@
@@ -1881,6 +1884,20 @@ obj-multi.obj: config/obj-multi.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o obj-multi.obj `if test -f 'config/obj-multi.c'; then $(CYGPATH_W) 'config/obj-multi.c'; else $(CYGPATH_W) '$(srcdir)/config/obj-multi.c'; fi`
 
+obj-plan9.o: config/obj-plan9.c
+@am__fastdepCC_TRUE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT obj-plan9.o -MD -MP -MF $(DEPDIR)/obj-plan9.Tpo -c -o obj-plan9.o `test -f 'config/obj-plan9.c' || echo '$(srcdir)/'`config/obj-plan9.c
+@am__fastdepCC_TRUE@	$(am__mv) $(DEPDIR)/obj-plan9.Tpo $(DEPDIR)/obj-plan9.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='config/obj-plan9.c' object='obj-plan9.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o obj-plan9.o `test -f 'config/obj-plan9.c' || echo '$(srcdir)/'`config/obj-plan9.c
+
+obj-plan9.obj: config/obj-plan9.c
+@am__fastdepCC_TRUE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT obj-plan9.obj -MD -MP -MF $(DEPDIR)/obj-plan9.Tpo -c -o obj-plan9.obj `if test -f 'config/obj-plan9.c'; then $(CYGPATH_W) 'config/obj-plan9.c'; else $(CYGPATH_W) '$(srcdir)/config/obj-plan9.c'; fi`
+@am__fastdepCC_TRUE@	$(am__mv) $(DEPDIR)/obj-plan9.Tpo $(DEPDIR)/obj-plan9.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='config/obj-plan9.c' object='obj-plan9.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o obj-plan9.obj `if test -f 'config/obj-plan9.c'; then $(CYGPATH_W) 'config/obj-plan9.c'; else $(CYGPATH_W) '$(srcdir)/config/obj-plan9.c'; fi`
+
 obj-som.o: config/obj-som.c
 @am__fastdepCC_TRUE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT obj-som.o -MD -MP -MF $(DEPDIR)/obj-som.Tpo -c -o obj-som.o `test -f 'config/obj-som.c' || echo '$(srcdir)/'`config/obj-som.c
 @am__fastdepCC_TRUE@	$(am__mv) $(DEPDIR)/obj-som.Tpo $(DEPDIR)/obj-som.Po
@@ -2391,7 +2408,7 @@ m68k-parse.c: $(srcdir)/config/m68k-parse.y
 # yacc will produce working code which contain compile time warnings.
 m68k-parse.@OBJEXT@: m68k-parse.c
 @am__fastdepCC_TRUE@	$(COMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ `test -f m68k-parse.c || echo $(srcdir)/`m68k-parse.c $(NO_WERROR)
-@am__fastdepCC_TRUE@	mv -f $(DEPDIR)/$*.Tpo $(DEPDIR)/$*.Po
+@am__fastdepCC_TRUE@	mv $(DEPDIR)/$*.Tpo $(DEPDIR)/$*.Po
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	source='m68k-parse.c' object='$@' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(COMPILE) -c `test -f m68k-parse.c || echo $(srcdir)/`m68k-parse.c $(NO_WERROR)
@@ -2414,7 +2431,7 @@ bfin-lex.c: $(srcdir)/config/bfin-lex.l
 	$(SHELL) $(YLWRAP) $(srcdir)/config/bfin-lex.l lex.yy.c bfin-lex.c -- $(LEXCOMPILE)
 bfin-lex.@OBJEXT@: bfin-lex.c bfin-parse.h $(srcdir)/config/bfin-defs.h
 @am__fastdepCC_TRUE@	$(COMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ `test -f bfin-lex.c || echo $(srcdir)/`bfin-lex.c $(NO_WERROR)
-@am__fastdepCC_TRUE@	mv -f $(DEPDIR)/$*.Tpo $(DEPDIR)/$*.Po
+@am__fastdepCC_TRUE@	mv $(DEPDIR)/$*.Tpo $(DEPDIR)/$*.Po
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	source='bfin-lex.c' object='$@' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(COMPILE) -c `test -f bfin-lex.c || echo $(srcdir)/`bfin-lex.c $(NO_WERROR)
@@ -2434,7 +2451,7 @@ $(srcdir)/config/rx-defs.h: ; @true
 # yacc will produce working code which contain compile time warnings.
 itbl-lex.@OBJEXT@: itbl-lex.c itbl-parse.h
 @am__fastdepCC_TRUE@	$(COMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ `test -f itbl-lex.c || echo $(srcdir)/`itbl-lex.c $(NO_WERROR)
-@am__fastdepCC_TRUE@	mv -f $(DEPDIR)/$*.Tpo $(DEPDIR)/$*.Po
+@am__fastdepCC_TRUE@	mv $(DEPDIR)/$*.Tpo $(DEPDIR)/$*.Po
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	source='itbl-lex.c' object='$@' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(COMPILE) -c `test -f itbl-lex.c || echo $(srcdir)/`itbl-lex.c $(NO_WERROR)
@@ -2443,7 +2460,7 @@ itbl-lex.@OBJEXT@: itbl-lex.c itbl-parse.h
 # yacc will produce working code which contain compile time warnings.
 itbl-parse.@OBJEXT@: itbl-parse.c
 @am__fastdepCC_TRUE@	$(COMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ `test -f itbl-parse.c || echo $(srcdir)/`itbl-parse.c $(NO_WERROR)
-@am__fastdepCC_TRUE@	mv -f $(DEPDIR)/$*.Tpo $(DEPDIR)/$*.Po
+@am__fastdepCC_TRUE@	mv $(DEPDIR)/$*.Tpo $(DEPDIR)/$*.Po
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	source='itbl-parse.c' object='$@' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(COMPILE) -c `test -f itbl-parse.c || echo $(srcdir)/`itbl-parse.c $(NO_WERROR)
@@ -2457,14 +2474,14 @@ itbl-ops.@OBJEXT@: itbl-parse.h
 
 itbl-tops.@OBJEXT@: itbl-ops.c itbl-parse.h
 @am__fastdepCC_TRUE@	$(COMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -o $@ -c -DSTAND_ALONE $(srcdir)/itbl-ops.c
-@am__fastdepCC_TRUE@	mv -f $(DEPDIR)/$*.Tpo $(DEPDIR)/$*.Po
+@am__fastdepCC_TRUE@	mv $(DEPDIR)/$*.Tpo $(DEPDIR)/$*.Po
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	source='itbl-ops.c' object='$@' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(COMPILE) -o $@ -DSTAND_ALONE -c $(srcdir)/itbl-ops.c
 
 itbl-test.@OBJEXT@: $(srcdir)/testsuite/gas/all/itbl-test.c
 @am__fastdepCC_TRUE@	$(COMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ -DSTAND_ALONE $(srcdir)/testsuite/gas/all/itbl-test.c
-@am__fastdepCC_TRUE@	mv -f $(DEPDIR)/$*.Tpo $(DEPDIR)/$*.Po
+@am__fastdepCC_TRUE@	mv $(DEPDIR)/$*.Tpo $(DEPDIR)/$*.Po
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	source='itbl-test.c' object='$@' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(COMPILE) -c -DSTAND_ALONE $(srcdir)/testsuite/gas/all/itbl-test.c
@@ -2563,15 +2580,15 @@ comparison:
 .PHONY: de-stage1 de-stage2 de-stage3
 
 de-stage1:
-	- (cd stage1 ; rm -f as$(EXEEXT) ; mv -f * ..)
+	- (cd stage1 ; rm -f as$(EXEEXT) ; mv * ..)
 	- rmdir stage1
 
 de-stage2:
-	- (cd stage2 ; rm -f as$(EXEEXT) ; mv -f * ..)
+	- (cd stage2 ; rm -f as$(EXEEXT) ; mv * ..)
 	- rmdir stage2
 
 de-stage3:
-	- (cd stage3 ; rm -f as$(EXEEXT) ; mv -f * ..)
+	- (cd stage3 ; rm -f as$(EXEEXT) ; mv * ..)
 	- rmdir stage3
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
