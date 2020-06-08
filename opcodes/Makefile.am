@@ -264,7 +264,7 @@ AM_CPPFLAGS = -I. -I$(srcdir) -I../bfd -I$(INCDIR) -I$(BFDDIR) @HDEFINES@ @INCIN
 disassemble.lo: disassemble.c
 if am__fastdepCC
 	$(LTCOMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ @archdefs@ $(srcdir)/disassemble.c
-	mv -f $(DEPDIR)/$*.Tpo $(DEPDIR)/$*.Plo
+	mv $(DEPDIR)/$*.Tpo $(DEPDIR)/$*.Plo
 else
 if AMDEP
 	source='disassemble.c' object='$@' libtool=yes @AMDEPBACKSLASH@
@@ -533,7 +533,7 @@ z8k-dis.lo: $(srcdir)/z8k-opc.h
 sh-dis.lo: sh-dis.c
 if am__fastdepCC
 	$(LTCOMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ @archdefs@ $(srcdir)/sh-dis.c
-	mv -f $(DEPDIR)/$*.Tpo $(DEPDIR)/$*.Plo
+	mv $(DEPDIR)/$*.Tpo $(DEPDIR)/$*.Plo
 else
 if AMDEP
 	source='sh-dis.c' object='$@' libtool=yes @AMDEPBACKSLASH@

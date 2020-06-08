@@ -6902,7 +6902,7 @@
 	* gasp.c (show_usage): Likewise.
 
 	* Makefile.am (MKDEP): Use gcc -MM rather than ../mkdep.
-	(DEP): Quote when passing vars to sub-make.  Use "mv -f" rather
+	(DEP): Quote when passing vars to sub-make.  Use "mv" rather
 	than move-if-change.
 	(DEP1): Modify for "gcc -MM".
 	(DEPTC): Likewise.

@@ -185,7 +185,7 @@ if test $ret -eq 0; then
 	  rm -f "$target"
 	else
           echo updating "$2"
-          mv -f "$target" "$realtarget"
+          mv "$target" "$realtarget"
         fi
       fi
     else

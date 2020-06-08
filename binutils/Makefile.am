@@ -219,7 +219,7 @@ objdump_LDADD = $(OBJDUMP_PRIVATE_OFILES) $(OPCODES) $(BFDLIB) $(LIBIBERTY) $(LI
 objdump.@OBJEXT@:objdump.c
 if am__fastdepCC
 	$(COMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ $(OBJDUMP_DEFS) $(srcdir)/objdump.c
-	mv -f $(DEPDIR)/$*.Tpo $(DEPDIR)/$*.Po
+	mv $(DEPDIR)/$*.Tpo $(DEPDIR)/$*.Po
 else
 if AMDEP
 	source='objdump.c' object='$@' libtool=no @AMDEPBACKSLASH@
@@ -299,7 +299,7 @@ sysinfo.h: sysinfo.c
 arparse.@OBJEXT@: arparse.c
 if am__fastdepCC
 	$(COMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ `test -f arparse.c || echo $(srcdir)/`arparse.c $(NO_WERROR)
-	mv -f $(DEPDIR)/$*.Tpo $(DEPDIR)/$*.Po
+	mv $(DEPDIR)/$*.Tpo $(DEPDIR)/$*.Po
 else
 if AMDEP
 	source='arparse.c' object='$@' libtool=no @AMDEPBACKSLASH@
@@ -311,7 +311,7 @@ endif
 arlex.@OBJEXT@: arlex.c
 if am__fastdepCC
 	$(COMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ `test -f arlex.c || echo $(srcdir)/`arlex.c $(NO_WERROR)
-	mv -f $(DEPDIR)/$*.Tpo $(DEPDIR)/$*.Po
+	mv $(DEPDIR)/$*.Tpo $(DEPDIR)/$*.Po
 else
 if AMDEP
 	source='arlex.c' object='$@' libtool=no @AMDEPBACKSLASH@
@@ -323,7 +323,7 @@ endif
 sysroff.@OBJEXT@: sysroff.c
 if am__fastdepCC
 	$(COMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ `test -f sysroff.c || echo $(srcdir)/`sysroff.c $(NO_WERROR)
-	mv -f $(DEPDIR)/$*.Tpo $(DEPDIR)/$*.Po
+	mv $(DEPDIR)/$*.Tpo $(DEPDIR)/$*.Po
 else
 if AMDEP
 	source='sysroff.c' object='$@' libtool=no @AMDEPBACKSLASH@
@@ -335,7 +335,7 @@ endif
 defparse.@OBJEXT@: defparse.c
 if am__fastdepCC
 	$(COMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ `test -f defparse.c || echo $(srcdir)/`defparse.c $(NO_WERROR)
-	mv -f $(DEPDIR)/$*.Tpo $(DEPDIR)/$*.Po
+	mv $(DEPDIR)/$*.Tpo $(DEPDIR)/$*.Po
 else
 if AMDEP
 	source='defparse.c' object='$@' libtool=no @AMDEPBACKSLASH@
@@ -347,7 +347,7 @@ endif
 deflex.@OBJEXT@: deflex.c
 if am__fastdepCC
 	$(COMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ `test -f deflex.c || echo $(srcdir)/`deflex.c $(NO_WERROR)
-	mv -f $(DEPDIR)/$*.Tpo $(DEPDIR)/$*.Po
+	mv $(DEPDIR)/$*.Tpo $(DEPDIR)/$*.Po
 else
 if AMDEP
 	source='deflex.c' object='$@' libtool=no @AMDEPBACKSLASH@
@@ -359,7 +359,7 @@ endif
 nlmheader.@OBJEXT@: nlmheader.c
 if am__fastdepCC
 	$(COMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ `test -f nlmheader.c || echo $(srcdir)/`nlmheader.c $(NO_WERROR)
-	mv -f $(DEPDIR)/$*.Tpo $(DEPDIR)/$*.Po
+	mv $(DEPDIR)/$*.Tpo $(DEPDIR)/$*.Po
 else
 if AMDEP
 	source='nlmheader.c' object='$@' libtool=no @AMDEPBACKSLASH@
@@ -371,7 +371,7 @@ endif
 rcparse.@OBJEXT@: rcparse.c
 if am__fastdepCC
 	$(COMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ `test -f rcparse.c || echo $(srcdir)/`rcparse.c $(NO_WERROR)
-	mv -f $(DEPDIR)/$*.Tpo $(DEPDIR)/$*.Po
+	mv $(DEPDIR)/$*.Tpo $(DEPDIR)/$*.Po
 else
 if AMDEP
 	source='rcparse.c' object='$@' libtool=no @AMDEPBACKSLASH@
@@ -383,7 +383,7 @@ endif
 mcparse.@OBJEXT@: mcparse.c
 if am__fastdepCC
 	$(COMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ `test -f mcparse.c || echo $(srcdir)/`mcparse.c $(NO_WERROR)
-	mv -f $(DEPDIR)/$*.Tpo $(DEPDIR)/$*.Po
+	mv $(DEPDIR)/$*.Tpo $(DEPDIR)/$*.Po
 else
 if AMDEP
 	source='mcparse.c' object='$@' libtool=no @AMDEPBACKSLASH@
@@ -395,7 +395,7 @@ endif
 rclex.@OBJEXT@: rclex.c
 if am__fastdepCC
 	$(COMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ $(srcdir)/rclex.c $(NO_WERROR)
-	mv -f $(DEPDIR)/$*.Tpo $(DEPDIR)/$*.Po
+	mv $(DEPDIR)/$*.Tpo $(DEPDIR)/$*.Po
 else
 if AMDEP
 	source='rclex.c' object='$@' libtool=no @AMDEPBACKSLASH@
@@ -407,7 +407,7 @@ endif
 mclex.@OBJEXT@: mclex.c
 if am__fastdepCC
 	$(COMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ $(srcdir)/mclex.c $(NO_WERROR)
-	mv -f $(DEPDIR)/$*.Tpo $(DEPDIR)/$*.Po
+	mv $(DEPDIR)/$*.Tpo $(DEPDIR)/$*.Po
 else
 if AMDEP
 	source='mclex.c' object='$@' libtool=no @AMDEPBACKSLASH@
@@ -425,7 +425,7 @@ dlltool_LDADD = $(BFDLIB) $(LIBIBERTY) @LEXLIB@ $(LIBINTL)
 dlltool.@OBJEXT@:
 if am__fastdepCC
 	$(COMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@  $(DLLTOOL_DEFS) $(srcdir)/dlltool.c
-	mv -f $(DEPDIR)/$*.Tpo $(DEPDIR)/$*.Po
+	mv $(DEPDIR)/$*.Tpo $(DEPDIR)/$*.Po
 else
 if AMDEP
 	source='dlltool.c' object='$@' libtool=no @AMDEPBACKSLASH@
@@ -437,7 +437,7 @@ endif
 rescoff.@OBJEXT@:
 if am__fastdepCC
 	$(COMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@  $(DLLTOOL_DEFS) $(srcdir)/rescoff.c
-	mv -f $(DEPDIR)/$*.Tpo $(DEPDIR)/$*.Po
+	mv $(DEPDIR)/$*.Tpo $(DEPDIR)/$*.Po
 else
 if AMDEP
 	source='rescoff.c' object='$@' libtool=no @AMDEPBACKSLASH@
@@ -458,7 +458,7 @@ if am__fastdepCC
 	ldname=`echo ld | sed '$(transform)'`; \
 	$(COMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ \
 	  -DLD_NAME="\"$${ldname}\"" @NLMCONV_DEFS@ $(srcdir)/nlmconv.c
-	mv -f $(DEPDIR)/$*.Tpo $(DEPDIR)/$*.Po
+	mv $(DEPDIR)/$*.Tpo $(DEPDIR)/$*.Po
 else
 if AMDEP
 	source='nlmconv.c' object='$@' libtool=no @AMDEPBACKSLASH@

@@ -11,7 +11,7 @@
 ## -------------------- ##
 ## M4sh Initialization. ##
 ## -------------------- ##
-
+GREP=grep
 # Be more Bourne compatible
 DUALCASE=1; export DUALCASE # for MKS sh
 if test -n "${ZSH_VERSION+set}" && (emulate sh) >/dev/null 2>&1; then :
@@ -1275,8 +1275,8 @@ test "$silent" = yes && exec 6>/dev/null
 
 
 ac_pwd=`pwd` && test -n "$ac_pwd" &&
-ac_ls_di=`ls -di .` &&
-ac_pwd_ls_di=`cd "$ac_pwd" && ls -di .` ||
+ac_ls_di=`ls -d .` &&
+ac_pwd_ls_di=`cd "$ac_pwd" && ls -d .` ||
   as_fn_error "working directory cannot be determined"
 test "X$ac_ls_di" = "X$ac_pwd_ls_di" ||
   as_fn_error "pwd does not report name of working directory"
@@ -1571,7 +1571,7 @@ $as_echo "$ac_try_echo"; } >&5
   if test -s conftest.err; then
     grep -v '^ *+' conftest.err >conftest.er1
     cat conftest.er1 >&5
-    mv -f conftest.er1 conftest.err
+    mv conftest.er1 conftest.err
   fi
   $as_echo "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
   test $ac_status = 0; } && {
@@ -1609,7 +1609,7 @@ $as_echo "$ac_try_echo"; } >&5
   if test -s conftest.err; then
     grep -v '^ *+' conftest.err >conftest.er1
     cat conftest.er1 >&5
-    mv -f conftest.er1 conftest.err
+    mv conftest.er1 conftest.err
   fi
   $as_echo "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
   test $ac_status = 0; } && {
@@ -1654,7 +1654,7 @@ $as_echo "$ac_try_echo"; } >&5
   if test -s conftest.err; then
     grep -v '^ *+' conftest.err >conftest.er1
     cat conftest.er1 >&5
-    mv -f conftest.er1 conftest.err
+    mv conftest.er1 conftest.err
   fi
   $as_echo "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
   test $ac_status = 0; } >/dev/null && {
@@ -2523,7 +2523,7 @@ fi
 ac_ext=c
 ac_cpp='$CPP $CPPFLAGS'
 ac_compile='$CC -c $CFLAGS $CPPFLAGS conftest.$ac_ext >&5'
-ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS >&5'
+ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS -lbsd >&5'
 ac_compiler_gnu=$ac_cv_c_compiler_gnu
 
 
@@ -2668,7 +2668,7 @@ test -n "$target_alias" &&
 ac_ext=c
 ac_cpp='$CPP $CPPFLAGS'
 ac_compile='$CC -c $CFLAGS $CPPFLAGS conftest.$ac_ext >&5'
-ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS >&5'
+ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS -lbsd >&5'
 ac_compiler_gnu=$ac_cv_c_compiler_gnu
 if test -n "$ac_tool_prefix"; then
   # Extract the first word of "${ac_tool_prefix}gcc", so it can be a program name with args.
@@ -3427,7 +3427,7 @@ fi
 ac_ext=c
 ac_cpp='$CPP $CPPFLAGS'
 ac_compile='$CC -c $CFLAGS $CPPFLAGS conftest.$ac_ext >&5'
-ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS >&5'
+ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS -lbsd >&5'
 ac_compiler_gnu=$ac_cv_c_compiler_gnu
 
 
@@ -4376,7 +4376,7 @@ fi
 ac_ext=c
 ac_cpp='$CPP $CPPFLAGS'
 ac_compile='$CC -c $CFLAGS $CPPFLAGS conftest.$ac_ext >&5'
-ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS >&5'
+ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS -lbsd >&5'
 ac_compiler_gnu=$ac_cv_c_compiler_gnu
 if test -n "$ac_tool_prefix"; then
   # Extract the first word of "${ac_tool_prefix}gcc", so it can be a program name with args.
@@ -4910,13 +4910,13 @@ fi
 ac_ext=c
 ac_cpp='$CPP $CPPFLAGS'
 ac_compile='$CC -c $CFLAGS $CPPFLAGS conftest.$ac_ext >&5'
-ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS >&5'
+ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS -lbsd >&5'
 ac_compiler_gnu=$ac_cv_c_compiler_gnu
 
 ac_ext=c
 ac_cpp='$CPP $CPPFLAGS'
 ac_compile='$CC -c $CFLAGS $CPPFLAGS conftest.$ac_ext >&5'
-ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS >&5'
+ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS -lbsd >&5'
 ac_compiler_gnu=$ac_cv_c_compiler_gnu
 { $as_echo "$as_me:${as_lineno-$LINENO}: checking how to run the C preprocessor" >&5
 $as_echo_n "checking how to run the C preprocessor... " >&6; }
@@ -5047,7 +5047,7 @@ fi
 ac_ext=c
 ac_cpp='$CPP $CPPFLAGS'
 ac_compile='$CC -c $CFLAGS $CPPFLAGS conftest.$ac_ext >&5'
-ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS >&5'
+ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS -lbsd >&5'
 ac_compiler_gnu=$ac_cv_c_compiler_gnu
 
 
@@ -6102,7 +6102,7 @@ max_cmd_len=$lt_cv_sys_max_cmd_len
 
 
 : ${CP="cp -f"}
-: ${MV="mv -f"}
+: ${MV="mv"}
 : ${RM="rm -f"}
 
 { $as_echo "$as_me:${as_lineno-$LINENO}: checking whether the shell understands some XSI constructs" >&5
@@ -7021,7 +7021,7 @@ _LT_EOF
   test $ac_status = 0; } && test -s "$nlist"; then
       # Try sorting and uniquifying the output.
       if sort "$nlist" | uniq > "$nlist"T; then
-	mv -f "$nlist"T "$nlist"
+	mv "$nlist"T "$nlist"
       else
 	rm -f "$nlist"T
       fi
@@ -7268,7 +7268,7 @@ else
   ac_ext=c
 ac_cpp='$CPP $CPPFLAGS'
 ac_compile='$CC -c $CFLAGS $CPPFLAGS conftest.$ac_ext >&5'
-ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS >&5'
+ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS -lbsd >&5'
 ac_compiler_gnu=$ac_cv_c_compiler_gnu
 
      cat confdefs.h - <<_ACEOF >conftest.$ac_ext
@@ -7292,7 +7292,7 @@ rm -f core conftest.err conftest.$ac_objext \
      ac_ext=c
 ac_cpp='$CPP $CPPFLAGS'
 ac_compile='$CC -c $CFLAGS $CPPFLAGS conftest.$ac_ext >&5'
-ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS >&5'
+ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS -lbsd >&5'
 ac_compiler_gnu=$ac_cv_c_compiler_gnu
 
 fi
@@ -8323,7 +8323,7 @@ lt_save_CC="$CC"
 ac_ext=c
 ac_cpp='$CPP $CPPFLAGS'
 ac_compile='$CC -c $CFLAGS $CPPFLAGS conftest.$ac_ext >&5'
-ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS >&5'
+ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS -lbsd >&5'
 ac_compiler_gnu=$ac_cv_c_compiler_gnu
 
 
@@ -11722,7 +11722,7 @@ fi
 ac_ext=c
 ac_cpp='$CPP $CPPFLAGS'
 ac_compile='$CC -c $CFLAGS $CPPFLAGS conftest.$ac_ext >&5'
-ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS >&5'
+ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS -lbsd >&5'
 ac_compiler_gnu=$ac_cv_c_compiler_gnu
 
 CC="$lt_save_CC"
@@ -15422,6 +15422,7 @@ do
     pef_xlib_vec)               tb="$tb pef.lo" ;;
     pdp11_aout_vec)		tb="$tb pdp11.lo" ;;
     plugin_vec)                 tb="$tb plugin.lo" ;;
+    plan9_i386_vec)             tb="$tb plan9-i386.lo aout32.lo" ;;
     pmac_xcoff_vec)		tb="$tb coff-rs6000.lo xcofflink.lo" ;;
     ppcboot_vec)		tb="$tb ppcboot.lo" ;;
     riscix_vec)			tb="$tb aout32.lo riscix.lo" ;;
@@ -18210,7 +18211,7 @@ _LT_EOF
   sed -n '/^# Generated shell functions inserted here/,$p' "$ltmain" >> "$cfgfile" \
     || (rm -f "$cfgfile"; exit 1)
 
-  mv -f "$cfgfile" "$ofile" ||
+  mv "$cfgfile" "$ofile" ||
     (rm -f "$ofile" && cp "$cfgfile" "$ofile" && rm -f "$cfgfile")
   chmod +x "$ofile"
 
@@ -18684,7 +18685,7 @@ EOF
 if test -r bfd_stdint.h && cmp -s tmp-stdint.h bfd_stdint.h; then
   rm -f tmp-stdint.h
 else
-  mv -f tmp-stdint.h bfd_stdint.h
+  mv tmp-stdint.h bfd_stdint.h
 fi
 
  ;;

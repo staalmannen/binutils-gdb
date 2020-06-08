@@ -39,6 +39,10 @@ Attempt to increase stack size limit to @var{pref} bytes if possible.
 #include <stdint.h>
 #endif
 #ifdef HAVE_SYS_RESOURCE_H
+/* Plan9 /sys/include/ape/sys/resource.h:9: field `ru_utime' has incomplete type
+ * hack BSD style including sys/time.h
+ */
+#include <sys/time.h>
 #include <sys/resource.h>
 #endif
 

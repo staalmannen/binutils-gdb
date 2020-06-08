@@ -4,7 +4,7 @@ AUTOMAKE_OPTIONS = 1.11 no-dist foreign
 ACLOCAL_AMFLAGS = -I . -I .. -I ../config
 
 # Uncomment the following line when doing a release.
-# RELEASE=y
+RELEASE=y
 
 INCDIR = $(srcdir)/../include
 CSEARCH = -I. -I$(srcdir) -I$(INCDIR)
@@ -386,6 +386,7 @@ BFD32_BACKENDS = \
 	pei-ppc.lo \
 	pei-sh.lo \
 	peigen.lo \
+	plan9-i386.lo \
 	plugin.lo \
 	ppcboot.lo \
 	reloc16.lo \
@@ -567,6 +568,7 @@ BFD32_BACKENDS_CFILES = \
 	pei-i386.c \
 	pei-mcore.c \
 	pei-mips.c \
+	plan9-i386.c \
 	pei-ppc.c \
 	pei-sh.c \
 	plugin.c \

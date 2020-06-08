@@ -796,7 +796,7 @@ pe_lcomm (int needs_align)
 
 const pseudo_typeS md_pseudo_table[] =
 {
-#if !defined(OBJ_AOUT) && !defined(USE_ALIGN_PTWO)
+#if !defined(OBJ_AOUT) && !defined(OBJ_PLAN9) && !defined(USE_ALIGN_PTWO)
   {"align", s_align_bytes, 0},
 #else
   {"align", s_align_ptwo, 0},
@@ -1992,20 +1992,20 @@ update_code_flag (int value, int check)
   if (value == CODE_64BIT && !cpu_arch_flags.bitfield.cpulm )
     {
       if (check)
-	as_error = as_fatal;
+		as_error = as_fatal;
       else
-	as_error = as_bad;
+		as_error = as_bad;
       (*as_error) (_("64bit mode not supported on `%s'."),
-		   cpu_arch_name ? cpu_arch_name : default_arch);
+					cpu_arch_name ? cpu_arch_name : default_arch);
     }
   if (value == CODE_32BIT && !cpu_arch_flags.bitfield.cpui386)
     {
       if (check)
-	as_error = as_fatal;
+		as_error = as_fatal;
       else
-	as_error = as_bad;
+		as_error = as_bad;
       (*as_error) (_("32bit mode not supported on `%s'."),
-		   cpu_arch_name ? cpu_arch_name : default_arch);
+					cpu_arch_name ? cpu_arch_name : default_arch);
     }
   stackop_size = '\0';
 }
@@ -6830,8 +6830,8 @@ i386_finalize_immediate (segT exp_seg ATTRIBUTE_UNUSED, expressionS *exp,
 	exp->X_add_number
 	  = (exp->X_add_number ^ ((addressT) 1 << 31)) - ((addressT) 1 << 31);
     }
-#if (defined (OBJ_AOUT) || defined (OBJ_MAYBE_AOUT))
-  else if (OUTPUT_FLAVOR == bfd_target_aout_flavour
+#if (defined (OBJ_AOUT) || defined (OBJ_PLAN9) || defined (OBJ_MAYBE_AOUT))
+  else if ((OUTPUT_FLAVOR == bfd_target_aout_flavour || OUTPUT_FLAVOR == bfd_target_plan9_flavour)
 	   && exp_seg != absolute_section
 	   && exp_seg != text_section
 	   && exp_seg != data_section
@@ -7124,7 +7124,7 @@ i386_finalize_displacement (segT exp_seg ATTRIBUTE_UNUSED, expressionS *exp,
 
 #if (defined (OBJ_AOUT) || defined (OBJ_MAYBE_AOUT))
   else if (exp->X_op != O_constant
-	   && OUTPUT_FLAVOR == bfd_target_aout_flavour
+	   && OUTPUT_FLAVOR == bfd_target_aout_flavour || OUTPUT_FLAVOR == bfd_target_plan9_flavour
 	   && exp_seg != absolute_section
 	   && exp_seg != text_section
 	   && exp_seg != data_section
@@ -7904,7 +7904,8 @@ md_apply_fix (fixS *fixP, valueT *valP, segT seg ATTRIBUTE_UNUSED)
 	 This covers for the fact that bfd_install_relocation will
 	 subtract the current location (for partial_inplace, PC relative
 	 relocations); see more below.  */
-#ifndef OBJ_AOUT
+//#ifndef OBJ_AOUT
+#if (!defined(OBJ_AOUT) && !defined(OBJ_PLAN9))
       if (IS_ELF
 #ifdef TE_PE
 	  || OUTPUT_FLAVOR == bfd_target_coff_flavour
@@ -8850,8 +8851,11 @@ md_undefined_symbol (char *name)
 valueT
 md_section_align (segT segment ATTRIBUTE_UNUSED, valueT size)
 {
-#if (defined (OBJ_AOUT) || defined (OBJ_MAYBE_AOUT))
-  if (OUTPUT_FLAVOR == bfd_target_aout_flavour)
+//#if (defined (OBJ_AOUT) || defined (OBJ_MAYBE_AOUT))
+//  if (OUTPUT_FLAVOR == bfd_target_aout_flavour)
+#if (defined (OBJ_AOUT) || defined (OBJ_PLAN9) || defined (OBJ_MAYBE_AOUT))
+  if (OUTPUT_FLAVOR == bfd_target_aout_flavour || OUTPUT_FLAVOR == bfd_target_plan9_flavour)
+
     {
       /* For a.out, force the section size to be aligned.  If we don't do
 	 this, BFD will align it for us, but it will not write out the

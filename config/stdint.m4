@@ -561,7 +561,7 @@ EOF
 if test -r ]_GCC_STDINT_H[ && cmp -s tmp-stdint.h ]_GCC_STDINT_H[; then
   rm -f tmp-stdint.h
 else
-  mv -f tmp-stdint.h ]_GCC_STDINT_H[
+  mv tmp-stdint.h ]_GCC_STDINT_H[
 fi
 
 ], [

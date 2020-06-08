@@ -118,6 +118,11 @@ to_ptr32 (char **ptr64)
 static pid_t pex_wait (struct pex_obj *, pid_t, int *, struct pex_time *);
 
 #ifdef HAVE_WAIT4
+#ifdef Plan9
+/* For struct rusage */
+#include <sys/time.h>
+#include <sys/resource.h>
+#endif
 
 static pid_t
 pex_wait (struct pex_obj *obj ATTRIBUTE_UNUSED, pid_t pid, int *status,

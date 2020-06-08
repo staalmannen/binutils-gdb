@@ -82,7 +82,7 @@ gprof.1: $(srcdir)/gprof.texi config.texi
 	-$(TEXI2POD) $(MANCONF) -Dgprof < $(srcdir)/gprof.texi > gprof.pod
 	-($(POD2MAN) gprof.pod | \
 	       sed -e '/^.if n .na/d' > $@.T$$$$ && \
-	       mv -f $@.T$$$$ $@) || \
+	       mv $@.T$$$$ $@) || \
 	       (rm -f $@.T$$$$ && exit 1)
 	rm -f gprof.pod
 

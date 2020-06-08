@@ -3243,7 +3243,7 @@ AC_CONFIG_FILES([Makefile],
   [sed "$extrasub_build" Makefile |
    sed "$extrasub_host" |
    sed "$extrasub_target" > mf$$
-   mv -f mf$$ Makefile],
+   mv mf$$ Makefile],
   [extrasub_build="$extrasub_build"
    extrasub_host="$extrasub_host"
    extrasub_target="$extrasub_target"])
